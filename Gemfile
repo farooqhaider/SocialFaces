@@ -4,7 +4,7 @@ gem 'rails', '3.0.11'
 
 gem 'devise',"1.1.rc0"
 gem 'recaptcha', :require => 'recaptcha/rails'
-gem 'mysql'
+gem 'pg'
 gem 'paperclip'
 gem 'dynamic_form'
 gem 'capistrano'
