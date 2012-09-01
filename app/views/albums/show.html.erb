@@ -1,0 +1,57 @@
+<%= stylesheet_link_tag "jquery.lightbox" %>
+
+<%= javascript_include_tag "jquery" %>
+<%= javascript_include_tag "jquery.lightbox"%>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#gallery a").lightBox();
+
+  });
+</script>
+
+
+<div id="container" >
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%="Photos of "%> <%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+    <%= link_to "Albums", :controller => "photos", :action => "index", :id => @user.id %><br/>
+    <%= link_to "Upload Photo", :controller => "photos", :action => "new", :id => @user.id %><br/>
+    <b><%= link_to "Create Album", :controller => "albums", :action => "new", :id => @user.id %></b><br/>
+    <%= link_to "Upload Video", :controller => "videos", :action => "new", :id => @user.id %>
+  </div>
+
+  <div id="page_content">
+    <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" #{@album.title.capitalize}"} %>
+      <br/>
+      <div style="float:right">
+        <%=  link_to image_tag("post_album.png",:height => '30',:width => '100'), :action=>"post", :controller=>"albums", :id => @album.id %>
+        <%if @user.eql?(current_user)%>
+          <%= link_to image_tag("edit_album.png",:height => '30',:width => '90'), :action=>"edit", :controller=>"albums", :id => @album.id %>&nbsp;&nbsp;
+          <%= link_to image_tag("add_more_photos.png", :height => '30', :width => '110'), :action=>"upload", :controller=>"albums", :id => @album.id %>&nbsp;&nbsp;
+        <%end%>
+        <%  unless((@album.title.eql?("Default Album" ))or (@album.title.eql?("Profile Picture")))%>
+          <%= link_to image_tag("delete_album.png",:height => '30',:width => '110'),:controller => "albums", :action => "destroy", :id => @album.id %>
+        <%end%>
+      </div>
+    </div>
+    <font color="red"><%=flash[:error_msg]%></font>
+    <br/>
+    <div id="gallery">
+      <%for photo in @photos %>
+        <div style ="float:left;margin-top:20px;margin-left:20px;margin-right:20px;">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="<%=photo.image.url%>" onclick=""><img id="image" src="<%=photo.image.url%>" width="172" height="172" alt="" /></a>
+    <%#= link_to image_tag(photo.image.url ,:height => '170',:width => '220'), :controller => "photos",:action=> "show", :id => photo.id%>
+        </div>
+      <%end%>
+    </div>
+
+   
+  </div>
+</div>
+
+<div id="footer">
+</div>

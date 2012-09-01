@@ -1,0 +1,15 @@
+<div style="float:left">
+<%= if user.photo.exists?
+    image_tag(user.photo.url ,:height => '200',:width => '180')
+  else
+    if user.gender.eql?("male")
+      image_tag("profile_picture_male.gif", :height => '130',:width => '180')
+    else
+      image_tag("profile_picture_female.gif", :height => '130', :width => '180')
+    end
+  end
+%>
+  <br/>
+  
+<%= link_to image_tag("upload_photo.png", :height => '25', :width => '180'), :controller => "users", :action => "edit", :id => user.id %>
+</div>

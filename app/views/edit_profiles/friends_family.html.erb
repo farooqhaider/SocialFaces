@@ -1,0 +1,31 @@
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_friends_family"}, {:name => "familyform"}) do %>
+
+
+  <div style="float:left;margin-left:100px;">
+    <%=label_tag(:relationship_status, "Relationship Status")%></div>
+  <div style="margin-left:270px;">
+    <%options = get_options_for_relationship_status(@user.relationship_status)%>
+    <%=select_tag "relationship_status", options.html_safe %>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;">
+    <%=label_tag(:family, "Family")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:email_address,nil,:size => 25)%> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%=select_tag "relation", "<option>Husband</option><option>Brother</option><option>Father</option><option>Son</option><option>Uncle</option><option>Daughter</option><option>Wife</option><option>Partner</option>".html_safe %>
+  </div>
+  <div style="float:left;margin-left:100px;">&nbsp;</div>
+  <div style="margin-left:270px;"><br/>
+    Enter email address
+  </div>
+  <hr/>
+
+  <div style="float:left;margin-left:100px;">&nbsp;</div>
+  <div style="margin-left:270px;"><a href="javascript:document.familyform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+
+<%end%>
+<br/>

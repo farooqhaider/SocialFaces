@@ -1,0 +1,18 @@
+<div id="heading">
+  <h1>
+    <%= "#{@user.first_name} #{@user.last_name} " %>
+    <%= image_tag("arrow.png")%><%= " Albums" %>
+  </h1>
+</div>
+
+<div id ="container">
+  <div id ="page_content">
+    <% @user.albums.each do |album| %>
+      <h2> Title: <%=link_to album.title, :controller => "photos",:action=> "show_album", :id => album.id%></h2>
+      Description: <%= link_to album.description , :controller => "photos",:action=> "show_album", :id => album.id%>
+    <%end%>
+  </div>
+</div>
+
+<div id ="footer">
+</div>

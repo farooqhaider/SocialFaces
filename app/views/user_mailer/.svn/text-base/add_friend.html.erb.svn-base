@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Friend Request accpeted </h1>
+    <p>
+      Email <%= @user.email  %> has accepted your friend request on facebook. <br/>
+      To see his profile, please login in to your account
+    </p>
+    
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

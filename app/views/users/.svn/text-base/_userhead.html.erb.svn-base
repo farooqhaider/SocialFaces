@@ -1,0 +1,4 @@
+<h2>
+  <%= "#{@user.first_name.capitalize} #{@user.last_name} " %>
+  <%= image_tag("arrow.png")%><%= str_val  %>
+</h2>

@@ -1,0 +1,48 @@
+
+<% javascript_include_tag 'swfobject','jwplayer' %>
+ <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+   <br/>
+  
+     <br/><br/><br/>
+    <%= render :partial => "albums/photos_menu", :locals => {:user=>@user} %>
+  </div>
+
+
+<div id ="page_content">
+      <div id="heading">
+        <div style="float:right;">
+      <%= link_to image_tag("upload_a_video.png", :height => '40', :width => '110'), :action=>"new", :controller=>"videos" %>&nbsp;&nbsp
+    </div>
+        
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" All Videos"} %>
+        <br/>
+        
+    </div>
+   
+  <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+        <b>Showing all Videos </b><span style="float:right;margin-left:10px;">
+          <%=link_to "Back to My Videos", :controller => "photos", :action => "index", :id => @user.id%>
+        </span></div>
+      <br/>
+
+      <div style="margin-left:50px;margin-right:200px;">
+  <% if @videos.blank? %>
+  you havent uploaded any video as yet!!
+  <%  else %>
+  <br></br>
+  <% @videos.each do |video| %>
+  <div  style="border:#408080 solid 1px; width:500px;">
+  <h3 style="color:#408080; text-align:center;"> <%= link_to video.title ,:controller=> "videos", :action => "display", :id => video.id%> </h3>
+  
+  <p><i><%= video.description %></i></p>
+  </div>
+   <%
+   #link_to image_tag(video.source.url,:height => '70',:width => '70')
+  end%>
+
+  <%end%>
+</div>
+</div>
+<div id ="footer">
+</div>

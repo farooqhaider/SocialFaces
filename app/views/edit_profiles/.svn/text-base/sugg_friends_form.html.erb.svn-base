@@ -1,0 +1,48 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#employers").tokenInput("/edit_profiles/getemployers/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#employers').data('pre')
+    });
+    $("#universities").tokenInput("/edit_profiles/getuniversities/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#universities').data('pre')
+    });
+    $("#schools").tokenInput("/edit_profiles/getschools/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#schools').data('pre')
+    });
+  });
+</script>
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_education_work"}, {:name => "educationworkform"}) do %>
+
+
+  <div style="float:left;margin-left:100px;margin-top: 200px;">
+    <%=label_tag(:employers, "Employers")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:employers,nil,:size => 50, "data-pre" => @user_employers)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;"><%=label_tag(:universities, "Universities")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:universities,nil,:size => 50, "data-pre" => @user_universities)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;"><%=label_tag(:schools, "Schools")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:schools,nil,:size => 50, "data-pre" => @user_schools)%>
+  </div>
+  <hr/>
+
+  <div style="float:left;margin-left:100px;">&nbsp;</div>
+  <div style="margin-left:270px;"><a href="javascript:document.educationworkform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+<%end%>
+<br/>

@@ -1,0 +1,88 @@
+<div id="heading" style=" margin-left:150px">
+  <h2><%= "Find friends from different parts of your life " %> </h2>
+
+  <hr/>
+  <%= form_tag({:controller => "users", :action => "suggestions_advanced_search"}, {:name => "suggsadvsearchform"}) do %>
+ 
+
+  <b> <%= label_tag 'Employer'%> </b> <br/><br/>
+    <% for employer in @sugg_users_employers%>
+    <%= check_box_tag "emp|#{employer}", employer %>&nbsp;<%=employer%><br/>
+    <%end%>
+    <br/>
+    <b> <%= label_tag 'University'%> </b> <br/>
+    <% for university in @sugg_users_universities%>
+    <%= check_box_tag "univ|#{university}", university %>&nbsp;<%=university%><br/>
+    <%end%>
+    <br/>
+    <b> <%= label_tag 'Mutual Friends'%> </b> <br/>
+    <% for mutual_friend in @sugg_users_mutual_friends%>
+    <%= check_box_tag "mutual|#{mutual_friend}", mutual_friend %>&nbsp;<%=mutual_friend%><br/>
+    <%end%>
+    <br/>
+    <b> <%= label_tag 'Hometown'%> </b> <br/>
+    <% for hometown in @sugg_users_hometowns%>
+    <%= check_box_tag "ht|#{hometown}", hometown %>&nbsp;<%=hometown%><br/>
+    <%end%>
+    <br/>
+    <b> <%= label_tag 'Current Location'%> </b> <br/>
+    <% for curr_location in @sugg_users_curr_locations%>
+    <%= check_box_tag "cr|#{curr_location}", curr_location %>&nbsp;<%=curr_location%><br/>
+    <%end%>
+    
+    <br/>
+    
+    <a href="javascript:document.suggsadvsearchform.submit()"><%=image_tag("search_btn.jpg")%></a>
+  <%end%>
+</div>
+<div id  ="page_content">
+<%unless @suggested_users.blank?%>
+  <% @suggested_users.each do |user| %>
+    <div style="float:left; margin-left:250px; margin-top: 10px">
+
+      <%= if user.photo.exists? 
+         link_to image_tag(user.photo.url ,:height => '120',:width => '100'), :controller => "users", :action => "show_profile", :id=> user.id
+      else
+        if user.gender.eql?("male")
+          link_to image_tag("profile_picture_male.gif", :height => '120',:width => '100'), :controller => "users", :action => "show_profile", :id=> user.id
+        else
+          link_to image_tag("profile_picture_female.gif", :height => '120', :width => '100'), :controller => "users", :action => "show_profile", :id=> user.id
+        end
+      end%>
+</div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{user.first_name} #{user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => user.id%></h3>
+        <% mutual_friend_ids = Friend.mutual_friend_ids(@user,user) %>
+        <% unless (mutual_friend_ids.size) == 0 %>
+        <% mutual_friend = User.find_by_id(mutual_friend_ids.first) %>
+          <% if (mutual_friend_ids.size) == 1 %>
+            <%= "Friend of " + mutual_friend.first_name + " " + mutual_friend.last_name %>
+          <%else%>
+            <%=  mutual_friend.first_name + " " + mutual_friend.last_name + " and " + (mutual_friend_ids.size - 1).to_s+ " "%>
+            <%= link_to "mutual friends", :controller => "users", :action => "mutual_friends", :id => user.id %>
+          <%end%>
+        <br/>
+        <% end %>
+        <% unless user.hometown.blank? %>
+          From <%=user.hometown.name%><br/>
+        <% end %>
+        <% unless user.universities.blank? %>
+          Studies at <%=user.universities.first.name %><br />
+        <% end %>
+          <% unless user.employers.blank? %>
+          Works at <%=user.employers.last.name %><br />
+        <% end %>
+      </div>
+     <div style="float:right; margin-left:100px; margin-top: 40px">
+      <%= link_to image_tag("add_friend.png", :height => '25', :width => '90'), :controller => "users", :action => "add_friend_req", :id=>user.id%>
+    </div>
+    <div style="clear:both;"></div>
+  <%end%>
+<%else%>
+    <div style="float:left; margin-left:250px; margin-top: 10px"><br/>No results found.</div>
+<%end%>
+</div>
+<div id="footer"></div>
+
+
+

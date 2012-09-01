@@ -1,0 +1,81 @@
+<div id="left_col">
+  <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+  <br/>
+  <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+  <hr/>
+  <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+
+  <br />
+  <hr/>
+  <%= render :partial => "lists", :locals => {:user=>@user} %>
+</div>
+
+
+
+<div id ="page_content">
+<div style="margin-left:20px; float:left">
+  <h2><%= "#{@user.first_name} #{@user.last_name} " %>
+  <%= image_tag("arrow.png")%><%= " Friends" %> </h2>
+  <hr/>
+  <%= form_tag({:controller => "users", :action => "friends_advanced_search"}, {:name => "friendsadvsearchform"}) do %>
+    <b> <%= label_tag 'Name or Email'%> </b> <br/>
+    <%= text_field_tag :name %>
+    <br/><br/>
+    <b> <%= label_tag 'Employer'%> </b> <br/>
+    <%= text_field_tag :employer %>
+
+    <br/><br/>
+    <b> <%= label_tag 'Hometown'%> </b> <br/>
+    <%= text_field_tag :hometown %>
+    <br/><br/>
+    <b> <%= label_tag 'Current location'%> </b> <br/>
+    <%= text_field_tag :curr_location %>
+    <br/><br/>
+
+    <b> <%= label_tag 'College or University'%> </b><br/>
+    <%= text_field_tag :university %>
+    <br/><br/>
+    <a href="javascript:document.friendsadvsearchform.submit()"><%=image_tag("search_btn.jpg")%></a>
+  <%end%>
+</div>
+
+
+<div style="margin-left:0px;margin-top: 30px; float:right;margin-right:30px;">
+<%unless @friends.blank?%>
+  <% @friends.each do |friend| %>
+    <%friend_user = friend.friend%>
+    <div style="float:left; margin-left:100px; margin-top: 10px">
+      <a href="/users/view_other_profile/<%=friend_user.id%>">
+        <%= if friend_user.photo.exists?
+          image_tag(friend_user.photo.url ,:height => '120',:width => '100')
+        else
+          if friend_user.gender.eql?("male")
+            image_tag("profile_picture_male.gif", :height => '120',:width => '100')
+          else
+            image_tag("profile_picture_female.gif", :height => '120', :width => '100')
+          end
+        end%>
+      </a>
+      </div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{friend_user.first_name} #{friend_user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => friend_user.id%></h3>
+        <%=Friend.mutual_friend_ids(@user,friend_user).size%>&nbsp;Mutual Friends
+        <br />
+        <% unless friend_user.current_location.blank? %>
+          Lives in <%=friend_user.current_location.name %><br />
+        <% end %>
+        <% unless friend_user.hometown.blank? %>
+          From <%=friend_user.hometown.name%>&nbsp;
+        <% end %>
+      </div>
+   
+    <div style="float:right; margin-left:50px; margin-top: 40px">
+      <a href="/users/remove_friend/<%=friend_user.id%>"><%= image_tag("remove_from_friend.png", :height => '30', :width => '130')%></a>
+    </div>
+    <div style="clear:both;"></div>
+  <%end%>
+<%else%>
+ <br/>No results found.
+<%end%>
+</div>
+</div>

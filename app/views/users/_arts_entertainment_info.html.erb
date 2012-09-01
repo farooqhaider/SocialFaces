@@ -1,0 +1,65 @@
+<div style="">
+  <div style="width:100px;float:left;margin-left:20px;margin-top:10px;"></div>
+  <div style="width:400px;float:left;margin-top:10px;">
+    <div style ="float:left">
+      Music:&nbsp;&nbsp;
+      <br/>
+      Books:&nbsp;&nbsp;
+      <br/>
+      Movies:&nbsp;&nbsp;
+      <br/>
+      Tv shows:&nbsp;&nbsp;
+      <br/>
+      Games:&nbsp;&nbsp;
+    </div>
+
+    <div style="float:left; margin-left:30px">
+      <% if user.musics.blank? %>
+        None
+      <%else%>
+        <%for music in user.musics%>
+          <%=music.name%><%= "," unless music.eql?(user.musics.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.books.blank? %>
+        None
+      <%else%>
+        <%for book in user.books%>
+          <%=book.name%><%= "," unless book.eql?(user.books.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.movies.blank? %>
+        None
+      <%else%>
+        <%for movie in user.movies%>
+          <%=movie.name%><%= "," unless movie.eql?(user.movies.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.tv_shows.blank? %>
+        None
+      <%else%>
+        <%for tv_show in user.tv_shows%>
+          <%=tv_show.name%><%= "," unless tv_show.eql?(user.tv_shows.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.games.blank? %>
+        None
+      <%else%>
+        <%for game in user.games%>
+          <%=game.name%><%= "," unless game.eql?(user.games.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div id="header">
+</div>
+
+
+<div id= "left_col" style="float:left; margin-left:20px;">
+  <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <h1><%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h1>
+</div>
+<br/><br/>
+<div id ="page_content">
+  <div id="heading" style=" margin-left:50px"><h1><%= "Friend Requests" %> </h1>
+
+    <%unless @requests.blank?%>
+      <% @requests.each do |friend_req| %>
+        <% req_user = friend_req.user%>
+        <a href="/users/view_other_profile/<%=req_user.id%>">
+
+          <%= if req_user.photo.exists?
+            image_tag(req_user.photo.url ,:height => '90',:width => '90')
+          else
+            if req_user.gender.eql?("male")
+              image_tag("profile_picture_male.gif", :height => '90',:width => '90')
+            else
+              image_tag("profile_picture_female.gif", :height => '90', :width => '90')
+            end
+          end
+
+        %>
+        </a>
+        <a href="/users/view_other_profile/<%=req_user.id%>"><%= link_to "#{req_user.first_name} #{req_user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => req_user.id%></a>
+
+        <div style="float:right; margin-right:30px">
+          <a href="/users/add_friend/<%=req_user.id%>"><%= image_tag("confirm.jpg", :height => '50', :width => '80')%></a>
+          <a href="/users/cancel_friend_req/<%=req_user.id%>"><%= image_tag("notnow.jpg", :height => '50', :width => '80')%></a>
+        </div>
+        <hr/>
+        <br/><br/>
+      <%end%>
+    <%else%>
+      No Pending Friend Requests.
+    <%end%>
+  </div>
+</div>
+<div id ="footer"></div>

@@ -1,0 +1,43 @@
+<div id="header">
+</div>
+
+<br/><br/>
+
+<div id="container">
+
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+    <%= link_to "Lists", :controller => "users", :action => "lists", :id => @user.id %>
+
+  </div>
+  <div id="page_content" >
+    <div id="heading" style=" margin-left:50px"><h1><%= @list.name %></h1>
+
+      <% @friends.each do |friend| %>
+        <%= link_to friend.first_name , :controller => "users",:action=> "view_other_profile", :id => friend.id%>
+        <%= link_to friend.last_name , :controller => "users",:action=> "view_other_profile", :id => friend.id%>
+        <hr />
+        <br/>
+      <%end%>
+    </div>
+  </div>
+
+  <div style="float:right; ">
+    <% @friends.each do |friend| %>
+      <%= if friend.photo.exists?
+        image_tag(friend.photo.url,:height => '70',:width => '70')
+      else
+        if friend.gender.eql?("male")
+          image_tag("profile_picture_male.gif", :height => '70',:width => '70')
+        else
+          image_tag("profile_picture_female.gif", :height => '70', :width => '70')
+        end
+      end%>
+
+    <%end%>
+  </div>
+</div>
+
+

@@ -1,0 +1,75 @@
+<div id="left_col">
+  <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+
+  <br/><br/><br/>
+  <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+  <hr/>
+
+  <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+  <br />
+  <%= render :partial => "lists", :locals => {:user=>@user} %>
+
+</div>
+<div id="right_col">
+  <div id="editprofile">
+    <%if Friend.is_friend?(@curr_user, @user)%>
+      <a href="/users/remove_friend/<%=@user.id%>"><%= image_tag("remove_friend.jpg")%></a>
+    <%else%>
+      <%  if Request.is_pending_req?(@curr_user.id, @user.id)%>
+        <%= image_tag("req_sent.png")%>
+      <%else%>
+        <a href="/users/add_friend_req/<%=@user.id%>"><%= image_tag("add_friend.png")%></a>
+      <%end%>
+    <%end%>
+  </div>
+  <%if Friend.is_friend?(@curr_user,@user)%>
+  <%=link_to "Suggest Friends", :controller => "users", :action => "suggest_friends", :id => @user.id%>
+  <%end%>
+  
+</div>
+<div id="page_content">
+  <div id="heading">
+    <%= render :partial => "user_info", :locals => {:user => @user} %>
+  </div>
+  <br/>
+
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">
+    Work and education</div>
+  <%= render :partial => "work_education_info", :locals => {:user => @user} %>
+  <br/>
+  <br/><br/>
+  <br/>
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">Sport</div>
+  <%= render :partial => "sports_info", :locals => {:user => @user} %>
+  <br/>
+  <br/><br/>
+  <br/>
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">Arts and entertainment</div>
+
+  <%= render :partial => "arts_entertainment_info", :locals => {:user => @user} %>
+  <br/>
+  <br/>  <br/>
+  <br/><br/>
+  <br/><br/>
+  <br/>  
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">Activities and Interests</div>
+  <%= render :partial => "activities_interests_info", :locals => {:user => @user} %>
+  <br/>
+  <br/>
+  <br/>
+  
+  <br/>  
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">Basic information</div>
+  <%= render :partial => "basic_info", :locals => {:user => @user} %>
+  <br/>  <br/>
+  <br/><br/>
+  <br/><br/>
+  <br/>   <br/>
+  <br/><br/>
+  <br/><br/>
+  <br/>  
+  <div style="margin-left:50px;background-color:#CCCCCC;margin-right:200px;">Contact information</div>
+  <%= render :partial => "contact_info", :locals => {:user => @user} %>
+  <br/>
+
+</div>

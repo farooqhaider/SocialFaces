@@ -1,0 +1,157 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+      <title>Meet up ~ The place to meet everyone!!</title>
+      <%= stylesheet_link_tag "main", "session" %>
+      <%= csrf_meta_tag %>
+
+</head>
+
+
+<body class="body">
+		<div id="masthead" class="masthead">
+			<div id="logo" class="logo">
+				<img alt="" height="100" src="fblogo.jpg" width="250" />
+			</div>
+			<div id="header" class="header">
+				<%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
+					<table>
+					<tr>
+						<td>
+							<p> &nbsp;Email<br/>
+							<%= f.text_field :email %><br/>
+							 <% if devise_mapping.rememberable? -%>
+                                                         <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                                                          <% end -%>
+							</p>
+						</td>
+						<td>
+							<p>Password<br/>
+							<%= f.password_field :password %><br/>
+							<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                                                        <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+                                                        <% end -%>
+							</p>
+						</td>
+						<td style="width: 10%">
+							 <%= f.submit "Signin" %>
+
+						</td>
+					</tr>
+				</table>
+			<% end %>
+		</div>
+	</div>
+
+
+	<div id="container" class="container">
+        <% #resource.session_id.build if resource.session_id.empty? %>
+	<%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
+
+			<table align="right">
+                       <tr>
+                	<td align="right" colspan="2">
+                    	<p>
+                            Sign Up <br/>
+                            Its free and always will be
+                        </p>
+                        <hr style="width: 100%" align="left"/>
+                        <br />
+                    </td>
+                </tr>
+                          <tr>
+
+                              <td align="right"> </td>
+                              <td><%= f.error_messages %> </td>
+                          </tr>
+
+                                <tr>
+					<td align="right">Your email<br />Address:</td>
+					<td><%= f.text_field :email %></td>
+				</tr>
+
+                                 <tr>
+					<td align="right">New Password:</td>
+					<td><%= f.password_field :password %> </td>
+				</tr>
+                                <tr>
+					<td align="right">Confirm <br />password:</td>
+					<td><%= f.password_field :password_confirmation %></td>
+				</tr>
+
+                            
+				<tr>
+					<td align="right">First Name:</td>
+					<td><%= f.text_field :first_name%></td>
+				</tr>
+				<tr>
+					<td align="right">Last Name:</td>
+					<td><%= f.text_field :last_name%></td>
+				</tr>
+
+
+
+
+
+                               
+				<tr>
+						<td></td>
+						<td><a href="Main%20Page.html"  class="linkStyle">Why do i need to Provide my date of birth?</a></td>
+				</tr>
+				<tr>
+						<td></td>
+						<td><%= f.submit "Sign Up"%></td>
+				</tr>
+                <tr>
+                	<td align="right" colspan="2">
+						<hr style="width: 100%" align="right"/>
+						<a href="Main%20Page.html"  class="linkStyle">Create a page</a> for a celebrity,band and business<br/>
+                    </td>
+                </tr>
+			</table>
+
+
+
+
+		<%end%>
+
+	</div>
+
+		<div id="footer" class="footer" align="center">
+			<br/>
+			<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">Espanol</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">Portugues(Brasil)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">Francais(France)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">Deutsch</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">Italiano</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			&nbsp;&nbsp;<a href="Main%20Page.html" class="linkStyle">English(US)</a>
+			<hr style="width: 1084px; height: -12px;">
+
+			<a href="Main%20Page.html" class="linkStyle">Mobile</a> .
+			<a href="Main%20Page.html" class="linkStyle">Find Friends</a> .
+			<a href="Main%20Page.html" class="linkStyle">Badges</a> .
+			<a href="Main%20Page.html" class="linkStyle">People</a> .
+			<a href="Main%20Page.html" class="linkStyle">Pages</a> .
+			<a href="Main%20Page.html" class="linkStyle">About</a> .
+			<a href="Main%20Page.html" class="linkStyle">Advertising</a> .
+			<a href="Main%20Page.html" class="linkStyle">Create a page</a> .
+			<a href="Main%20Page.html" class="linkStyle">Developers</a> .
+			<a href="Main%20Page.html" class="linkStyle">Careers</a> .
+			<a href="Main%20Page.html" class="linkStyle">Privacy</a> .
+			<a href="Main%20Page.html" class="linkStyle">Terms</a> .
+			<a href="Main%20Page.html" class="linkStyle">Help</a>
+
+		</div>
+
+
+
+</body>
+
+</html>

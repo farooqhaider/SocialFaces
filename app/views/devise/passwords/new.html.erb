@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>Meet up ~ The place to meet everyone!! </title>
+    <%= stylesheet_link_tag "main", "session" %>
+    <%= csrf_meta_tag %>
+  </head>
+
+  <body class="body">
+    <div id="masthead" class="masthead" >
+      <div style="float:left">
+        <%= image_tag("meetup_large.png", :height => '135', :width => '320')%>
+        <br/>
+      </div>
+           <div style="clear:both"></div>
+    <div align="center" style="float:left; padding: 0;height:50%;width:50%;">
+      <%= image_tag("logo2.png", :height => '55', :width => '450')%>
+      <br/>
+      <%= image_tag("logo3.png", :height => '40', :width => '200')%>
+      <%= image_tag("newpeople.png", :height => '35', :width => '190')%>
+      <br/>
+       <%= image_tag("people.jpg", :height => '335', :width => '600')%>
+    </div>
+
+      <div id="container" class="container" style="float:right;">
+        <h2>Forgot your password?</h2>
+
+        <%= form_for(resource_name, resource, :url => password_path(resource_name)) do |f| %>
+          <%= f.error_messages %>
+
+          <p><%= f.label :email %></p>
+          <br/>
+          <p><%= f.text_field :email %></p>
+          <br/>
+          <p><%= f.submit "Send me Password Reset Instructions" %></p>
+          <br/>
+        <% end %>
+
+        <%= render :partial => "devise/shared/links" %>
+        <br/><br/><br/><br/>
+      </div>
+
+           
+      <div style="float:left;margin-top:0px;margin-left: 400px;margin-right: 60px;margin-bottom: 10px;">
+        Copyrights 2012 (c) Meetup Team2 Inc.
+      </div>
+  </body>
+
+</html>

@@ -1,0 +1,28 @@
+
+<div id="page_content">
+  <div id="heading"><b><%= label_tag 'name', 'TERMS AND CONDITIONS'%> </b></div>
+  
+<%= form_tag({:controller => "users", :action => "terms"}, {:name => "termsandconditionform"}) do %>
+  <div style="margin-left:50px; margin-top:0px">
+    <%= label_tag 'name', 'This agreement was written in English (US). To the extent any translated version of this agreement conflicts with the English version, the English version controls.  Please note that Section 16 contains certain changes to the general terms for users outside the United States.'%>
+    <br/> <br/>
+    <%= label_tag 'name', 'Date of Last Revision: 6th February, 2012'%>
+
+    <br/> <br/> <b>
+    <%= label_tag 'name', 'COMPANY INFORMATION'%><br/> </b>
+    <%= label_tag 'name', 'This website is made for the DSSD course at Lahore University of Management Sciences' %>
+    <br/> <br/>
+    <%= label_tag 'name', 'It is presented to you by : '%> <br/>
+    <%= label_tag 'name', 'Farooq Haider '%> <br/>
+    <%= label_tag 'name', 'Naveed ur Rehman'%> <br/>
+    <%= label_tag 'name', 'Samia Razaq Khan'%> <br/> <br/>
+
+    <%= label_tag 'name', 'Board of directors: Farooq, Naveed and Samia'%> <br/> <br/>
+
+    <%= label_tag 'name', 'Disclaimer: This is only a test project and can not be used for sale and can not be reproduced and/or copied for any purpose'%> <br/> <br/>
+
+    <%= label_tag 'name', 'Copyrights (c) Team 2 _ DSSD 2012'%>
+  </div>
+<% end%>
+
+</div>

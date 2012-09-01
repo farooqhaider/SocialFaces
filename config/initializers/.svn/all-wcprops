@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/development/!svn/ver/4102/Team2/Sprint4/config/initializers
+END
+inflections.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/inflections.rb
+END
+devise.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/devise.rb
+END
+session_store.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/session_store.rb
+END
+settings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/development/!svn/ver/4102/Team2/Sprint4/config/initializers/settings.rb
+END
+secret_token.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/secret_token.rb
+END
+backtrace_silencers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/backtrace_silencers.rb
+END
+mime_types.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/development/!svn/ver/2312/Team2/Sprint4/config/initializers/mime_types.rb
+END

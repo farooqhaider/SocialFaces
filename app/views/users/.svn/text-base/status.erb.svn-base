@@ -1,0 +1,46 @@
+
+<div id ="container">
+  <br/>
+  <div id="left_col">
+
+    <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+    <hr/>
+    <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+    <br />
+    <%= render :partial => "lists", :locals => {:user=>@user} %>
+
+  </div>
+  <div id ="page_content">
+    <div id="heading">
+      <h1>
+        <%= "#{@user.first_name} #{@user.last_name} " %>
+      </h1>
+    </div>
+    <div style="float:left;margin-left:80px">
+      <img style='float:left; ' src='<%= @post.user.photo.url %>' height='95' width='95' />
+
+      <b style='color :#408080;'><%=@post.user.first_name %> <%=  @post.user.last_name %></b>
+      <br/>
+      <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(@post.updated_at) %>&nbsp;ago </span>
+      <br/>
+      <span style='font-size:15px;'><%= @post.caption %></span>
+      <br/>
+      <% unless @post.location_id.blank? %>
+        - at <%=@post.location.name %>&nbsp;
+      <% end %>
+
+        <br/>
+      <div style="margin-top:7px">
+        <a id="like<%=@post_id%>" href="javascript:add_like(<%=@post_id%>)" >Like</a>
+        <%= link_to "Comment" %>
+        <%= link_to "Share" , :controller => "users", :action => "share", :id=>@post.id %>
+        <%unless(@post.user_id.eql?(@user.id))%>
+          <%= link_to "See Friendship" , :controller => "users", :action => "friendship", :id => @user.id%>
+        <%end%>
+        <%= link_to "Unfollow" %>
+      </div>
+    </div>
+  </div>
+</div>

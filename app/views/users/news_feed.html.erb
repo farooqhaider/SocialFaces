@@ -1,0 +1,275 @@
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<%= javascript_include_tag 'rails' %>
+<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag "jquery.form", "fb_dssd","jquery.remotipart", "jquery-ui.min","jquery.tokeninput" %>
+<%= stylesheet_link_tag 'ticker' %>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('a#link').click(function() {
+      var submenu = $('div#submenu');
+      if (submenu.is(":visible")) {
+        submenu.fadeOut();
+      } else {
+        submenu.fadeIn();
+      }
+    });
+    var submenu_active = false;
+
+    $('div#submenu').mouseenter(function() {
+      submenu_active = true;
+    });
+
+    $('div#submenu').mouseleave(function() {
+      submenu_active = false;
+      setTimeout(function() { if (submenu_active === false) $('div#submenu').fadeOut(); }, 400);
+    });
+
+  });
+
+ function post_detial(post_id){
+
+  url = '/users/ticker_post_detail?post_id='+post_id;
+
+  $.ajax({
+  url: url,
+  success:function(data) {
+
+          }
+        });
+
+}
+
+$(document).ready(function(){
+
+	var type = "all";
+	var speed = 700;
+	var pause = 5000;
+
+	function removeLast(){
+
+        url = '/users/ticker_feed?user_id=1&type='+type;
+        type = "poll";
+
+        $.ajax({
+          url: url,
+          success:function(data) {
+
+        //  last = $('ul#ticker li:last').html();
+
+	//	$('ul#ticker li:last').fadeOut('slow', function() {$(this).remove();});
+		addFirst(data);
+
+
+          }
+        });
+	}
+
+	function addFirst(last){
+		first = '<li style="display:none">'+last+'</li>';
+		//$('ul#ticker').prepend(last);
+		//$('ul#ticker li:first').animate({opacity: 1}, speed).slideDown('slow');
+                $(last).hide().prependTo('ul#ticker').fadeIn(2000);
+               // $('ul#ticker li:first').animate(1000).slideDown('slow').prepend(last);
+              //  $('ul#ticker li:first').fadeIn(10000).slideDown('slow');
+	}
+
+	interval = setInterval(removeLast, pause);
+
+});
+
+$("#hint").bind("mouseenter mouseleave", function(event){
+alert('hi');
+
+});
+
+
+var showTooltip = function(event) {
+
+                 alert('hh');
+		$('div.tooltip').remove();
+		$('<div class="tooltip">I\' am tooltips! tooltips! tooltips! :)</div>').appendTo('body');
+		
+	};
+
+	var hideTooltip = function() {
+		$('div.tooltip').remove();
+	};
+
+
+
+
+</script>
+
+
+<br/>
+
+<div id="left_col">
+  <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+  <hr/>
+  <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+  <br />
+  <%= render :partial => "lists", :locals => {:user=>@user} %>
+</div>
+
+
+<span id="hint">hint (mouseover me)</span>
+
+
+<div  style ="margin-right: 15px; float:right">
+  <ul id="ticker">
+  </ul>
+
+</div>
+
+
+<div id="page_content">
+  <div id="heading">
+    <%= render :partial => "user_info", :locals => {:user => @user} %>
+    <%=link_to "Recent News", :controller => "users", :action => "news_feed"%>
+    <%=link_to "Top News", :controller => "users", :action => "top_news_feed"%>
+    <div id="wall_div" style="width:550px;  padding: 10px;">
+
+      <% for feed in @feeds %>
+  <%if feed.feed_type.eql?(FEED_TYPE_POST)%>
+          <%post = Post.find_by_id(feed.post_id)%>
+          <%  if post.content_type.eql?("photo")  %>
+            <%=  render(:partial => 'users/upload_photo.html', :locals => {:post_id =>post.id},:layout => false) %>
+          <%  elsif post.content_type.eql?("video")%>
+            <%=  render(:partial => 'users/upload_video.html', :locals => {:post_id => post.id},:layout => false)%>
+          <%  else %>
+            <%= render(:partial => 'users/upload_status.html', :locals => { :post_id => post.id, :user_id =>@user.id},:layout => false)%>
+          <% end%>
+          <a id="link">Unsubscribe</a>
+          <div id="submenu" class="submenu">
+    <%unsubscription = Unsubscription.find_by_user_id_and_unsubscribed_user_id_and_feed_type(@user.id,post.user_id,"all")%>
+            <a id="unsub_all<%=post.id%>" href="javascript:unsubscribe(<%=post.id%>,<%=post.user_id%>,'all')" >
+              <%if unsubscription.blank?%>
+                Unsubscribe all updates
+              <%else%>
+                Subscribe all updates
+              <%end%>
+            </a><br/>
+    <%unsubscription = Unsubscription.find_by_user_id_and_unsubscribed_user_id_and_feed_type(@user.id,post.user_id,"status")%>
+            <a id="unsub_status<%=post.id%>" href="javascript:unsubscribe(<%=post.id%>,<%=post.user_id%>,'status')" >
+              <%if unsubscription.blank?%>
+                Unsubscribe status updates
+              <%else%>
+                Subscribe status updates
+              <%end%>
+            </a><br/>
+            <%unsubscription = Unsubscription.find_by_user_id_and_unsubscribed_user_id_and_feed_type(@user.id,post.user_id,"photo")%>
+            <a id="unsub_photo<%=post.id%>" href="javascript:unsubscribe(<%=post.id%>,<%=post.user_id%>,'photo')" >
+              <%if unsubscription.blank?%>Unsubscribe photo updates
+              <%else%>
+                Subscribe photo updates
+              <%end%>
+            </a><br/>
+            <%unsubscription = Unsubscription.find_by_user_id_and_unsubscribed_user_id_and_feed_type(@user.id,post.user_id,"video")%>
+            <a id="unsub_video<%=post.id%>" href="javascript:unsubscribe(<%=post.id%>,<%=post.user_id%>, 'video')" >
+              <%if unsubscription.blank?%>
+                Unsubscribe video updates
+              <%else%>
+                Subscribe video updates
+              <%end%>
+            </a><br/>
+
+          </div>
+        <%elsif feed.feed_type.eql?(FEED_TYPE_LIKE)%>
+          <%user = User.find_by_id(feed.user_id)%>
+          <%post = Post.find_by_id(feed.post_id)%>
+          <a href="/users/view_other_profile/<%=user.id%>"><%= "#{user.first_name.capitalize} #{user.last_name}" %></a>
+          likes this post
+          <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(feed.updated_at) %>&nbsp;ago </span>
+          <br></br>
+          <%  if post.content_type.eql?("photo")  %>
+            <%=   render(:partial => 'users/upload_photo.html', :locals => {:post_id =>post.id},:layout => false) %>
+          <%  elsif post.content_type.eql?("video")%>
+            <%=  render(:partial => 'users/upload_video.html', :locals => {:post_id => post.id},:layout => false)%>
+          <%  else %>
+            <%= render(:partial => 'users/upload_status.html', :locals => { :post_id => post.id, :user_id =>@user.id},:layout => false)%>
+          <% end%>
+
+
+        <%elsif feed.feed_type.eql?(FEED_TYPE_SHARE)%>
+
+          <%user = User.find_by_id(feed.user_id)%>
+          <%share = Share.find_by_id(feed.post_id)%>
+          <%shared_by = User.find_by_id(share.shared_with_id) %>
+          <%post = Post.find_by_id(share.post_id)%>
+
+          <img style='float:left; margin-right:5px;' src='<%= user.photo.url %>' height='65' width='55' />
+
+          <b style='color :#408080;'><%=  user.first_name %> <%=  user.last_name %></b>
+          <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(feed.updated_at) %>&nbsp;ago </span>
+          <br/>
+
+          shared
+          <b><%= share.caption %></b>
+          with
+          <a href="/users/view_other_profile/<%=shared_by.id%>"><%= "#{shared_by.first_name.capitalize} #{shared_by.last_name}" %></a>
+          on post
+          <br></br>
+          <hr></hr>
+          <div style="margin-left: 50px">
+
+
+            <br/>
+            <%  if post.content_type.eql?("photo")  %>
+              <%=   render(:partial => 'users/upload_photo.html', :locals => {:post_id =>post.id},:layout => false) %>
+            <%  elsif post.content_type.eql?("video")%>
+              <%=  render(:partial => 'users/upload_video.html', :locals => {:post_id => post.id},:layout => false)%>
+            <%  else %>
+              <%= render(:partial => 'users/upload_status.html', :locals => { :post_id => post.id, :user_id =>@user.id},:layout => false)%>
+            <% end%>
+
+          </div>
+        <%elsif feed.feed_type.eql?(FEED_TYPE_TAG)%>
+
+          <%tag = PostsUser.find_by_id(feed.post_id)%>
+          <%tagged_user = User.find_by_id(tag.user_id)%>
+          <%post = Post.find_by_id(tag.post_id)%>
+          <%user = User.find_by_id(post.user_id)%>
+          <a href="/users/view_other_profile/<%=user.id%>"><%= "#{user.first_name.capitalize} #{user.last_name}" %></a>
+          has tagged
+          <a href="/users/view_other_profile/<%=tagged_user.id%>"><%= "#{tagged_user.first_name.capitalize} #{tagged_user.last_name}" %></a>
+          in post
+          <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(feed.updated_at) %>&nbsp;ago </span>
+          <br></br>
+          <%  if post.content_type.eql?("photo")  %>
+            <%=   render(:partial => 'users/upload_photo.html', :locals => {:post_id =>post.id},:layout => false) %>
+          <%  elsif post.content_type.eql?("video")%>
+            <%=  render(:partial => 'users/upload_video.html', :locals => {:post_id => post.id},:layout => false)%>
+          <%  else %>
+            <%= render(:partial => 'users/upload_status.html', :locals => { :post_id => post.id, :user_id =>@user.id},:layout => false)%>
+          <% end%>
+          <%elsif feed.feed_type.eql?(FEED_TYPE_COMMENT)%>
+
+          <%user = User.find_by_id(feed.user_id)%>
+          <%post = Post.find_by_id(feed.post_id)%>
+          <a href="/users/view_other_profile/<%=user.id%>"><%= "#{user.first_name.capitalize} #{user.last_name}" %></a>
+          has commented on this post
+          <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(feed.updated_at) %>&nbsp;ago </span>
+          <br></br>
+          <%  if post.content_type.eql?("photo")  %>
+            <%=   render(:partial => 'users/upload_photo.html', :locals => {:post_id =>post.id},:layout => false) %>
+          <%  elsif post.content_type.eql?("video")%>
+            <%=  render(:partial => 'users/upload_video.html', :locals => {:post_id => post.id},:layout => false)%>
+          <%  else %>
+            <%= render(:partial => 'users/upload_status.html', :locals => { :post_id => post.id, :user_id =>@user.id},:layout => false)%>
+          <% end%>
+
+        <%elsif feed.feed_type.eql?(FEED_TYPE_FRIEND)%>
+          <%= render(:partial => 'users/feed_friendship.html', :locals => { :post_id => feed.post_id },:layout => false)%>
+        <%end%>
+      <%end%>
+
+    </div>
+  </div>
+</div>
+
+

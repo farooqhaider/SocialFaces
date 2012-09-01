@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>Meet up ~ The place to meet everyone!!</title>
+    <%= javascript_include_tag 'http://code.jquery.com/jquery-latest.js' %>
+
+    
+
+    <%= javascript_include_tag 'rails','application','jquery.tokeninput' %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "jquery.min", "jquery-ui.min", "jquery.tokeninput" %>
+
+    <%= stylesheet_link_tag "show_profile", "token-input-facebook" %>
+    <%= stylesheet_link_tag "jquery.lightbox" %>
+
+    <%= javascript_include_tag 'swfobject','jwplayer' %>
+
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "jquery.lightbox"%>
+
+  
+    <%= csrf_meta_tag %>
+    
+    <script>
+      $(document).ready(function(){
+        url = "/users/getsearchresults"
+        $("#search").autocomplete({
+          source: url
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+
+    <div id="masthead">
+      <div id="logo"><%= image_tag("meetup_small.png", :height => '55px', :width => '160px')%></div>
+      <div style="float:right; margin-right:30px; margin-top: 0px">
+        <span style="font-size: larger">
+          <%= link_to image_tag("profile.png", :height => '50px', :width => '80px'), :controller=> "users", :action => "show_profile", :id =>current_user.id%>&nbsp;&nbsp;
+          <%= link_to image_tag("sign_out.png", :height => '50px', :width => '110px'), :action=>"destroy", :controller=>"devise/sessions" %>&nbsp;&nbsp;
+        </span>
+      </div>
+      <div id="logo" style="margin-top:6px;margin-left:10px">
+        <%= form_tag({:controller => "users", :action => "search"}, {:name => "searchform"}) do %>
+          <%=text_field_tag(:search,nil,:size => 30)%>
+          <a href="javascript:document.searchform.submit()">
+            Search</a>
+        <%end%>
+      </div>
+    </div>
+
+    <div id ="tabhead" style="float:left">
+      <%= render :partial => "users/tabs" , :locals => {:selected => "Profile", :user=>current_user} %>
+</div>
+
+   
+    <div id="container">
+      <%= yield %>
+    </div>
+    <div id="footer" align="center">
+
+    </div>
+
+  </body>
+
+</html>

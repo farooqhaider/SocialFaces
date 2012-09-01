@@ -1,0 +1,32 @@
+<div style="">
+  <div style="width:100px;float:left;margin-left:20px;margin-top:10px;"></div>
+  <div style="width:400px;float:left;margin-top:10px;">
+    <div style ="float:left">
+      Activities:&nbsp;&nbsp;
+      <br/>
+      Interests:&nbsp;&nbsp;
+      <br/>
+    </div>
+
+    <div style="float:left; margin-left:30px">
+      <% if user.activities.blank? %>
+        None
+      <%else%>
+        <%for activity in user.activities%>
+          <%=activity.name%><%= "," unless activity.eql?(user.activities.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.interests.blank? %>
+        None
+      <%else%>
+        <%for interest in user.interests%>
+          <%=interest.name%><%= "," unless interest.eql?(user.interests.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<%unless friends.blank?%>
+  <b><%= link_to "FRIENDS",:controller=>"users",:action=>"friends", :id => user.id%> (<%=friends.size%>)<br/></b>
+  <div style="margin-left:10px">
+    <%  for friend in friends %>
+      <%user_friend = friend.friend %>
+      <div style="width:40px;float:left;margin-top:10px;">
+        <a href="/users/view_other_profile/<%=user_friend.id%>">
+          <%= if user_friend.photo.exists?
+
+            image_tag(user_friend.photo.url ,:height => '50',:width => '50')
+          else
+            if user_friend.gender.eql?("male")
+              image_tag("profile_picture_male.gif", :height => '50',:width => '50')
+            else
+              image_tag("profile_picture_female.gif", :height => '50', :width => '50')
+            end
+          end
+        %>
+        </a></div>
+      <div style="width:80px;float:left;margin-left:20px;margin-top:10px;"><a href="/users/view_other_profile/<%=user_friend.id%>"><%= "#{user_friend.first_name.capitalize} #{user_friend.last_name}" %></a></div>
+      <div style="clear:both;"></div>
+    <%end%>
+  <%end%>
+</div>

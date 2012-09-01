@@ -1,0 +1,65 @@
+<div id="heading" style=" margin-left:150px">
+  <h2><%= "Find friends from different parts of your life " %> </h2>
+
+  <hr/>
+  <%= form_tag({:controller => "users", :action => "advanced_search"}, {:name => "advsearchform"}) do %>
+    <b> <%= label_tag 'Name or Email'%> </b> <br/>
+    <%= text_field_tag :name %>
+    <br/><br/>
+    <b> <%= label_tag 'Employer'%> </b> <br/>
+    <%= text_field_tag :employer %>
+
+    <br/><br/>
+    <b> <%= label_tag 'Hometown'%> </b> <br/>
+    <%= text_field_tag :hometown %>
+    <br/><br/>
+    <b> <%= label_tag 'Current location'%> </b> <br/>
+    <%= text_field_tag :curr_location %>
+    <br/><br/>
+
+    <b> <%= label_tag 'College or University'%> </b><br/>
+    <%= text_field_tag :university %>
+    <br/><br/>
+    <a href="javascript:document.advsearchform.submit()"><%=image_tag("search_btn.jpg")%></a>
+  <%end%>
+</div>
+
+<div id  ="page_content">
+  <%unless @search_results.blank?%>
+    <% @search_results.each do |user| %>
+      <div style="float:left; margin-left:250px; margin-top: 10px">
+        <%= if user.photo.exists?
+          image_tag(user.photo.url ,:height => '120',:width => '100')
+        else
+          if user.gender.eql?("male")
+            image_tag("profile_picture_male.gif", :height => '120',:width => '100')
+          else
+            image_tag("profile_picture_female.gif", :height => '120', :width => '100')
+          end
+        end%>
+      </div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{user.first_name} #{user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => user.id%></h3>
+        <%=Friend.mutual_friend_ids(@user,user).size%>&nbsp;Mutual Friends
+        <% unless user.current_location.blank? %>
+          Lives in <%=user.current_location.name %><br />
+        <% end %>
+        <% unless user.hometown.blank? %>
+          From <%=user.hometown.name%>&nbsp;
+        <% end %>
+      </div>
+  
+      <div style="float:right; margin-left:100px; margin-top: 40px">
+        <%= image_tag("add_friend.png", :height => '25', :width => '90')%>
+      </div>
+      <div style="clear:both;"></div>
+    <%end%>
+  <%else%>
+
+    <br/>No results found.
+  <%end%>
+</div>
+<div id="footer"></div>
+
+
+

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/user_mailer
+END
+add_friend_req.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/user_mailer/add_friend_req.html.erb
+END
+add_friend.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/user_mailer/add_friend.html.erb
+END

@@ -1,0 +1,16 @@
+<div id="heading">
+</div>
+<div id= "left_col" style="float:left; margin-left:20px;">
+  <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <h1><%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h1>
+</div>
+<br/><br/>
+<div id ="page_content">
+  <%for photo in @photos %>
+    <%= link_to image_tag(photo.image.url ,:height => '170',:width => '220'), :controller => "photos",:action=> "show", :id => photo.id%>
+  <%end%>
+</div>
+
+<div id="footer">
+</div>

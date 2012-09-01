@@ -1,0 +1,28 @@
+<div id="header">
+</div>
+
+<div id= "left_col" style="float:left; margin-left:20px;">
+  <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <h3><%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+</div>
+
+<div id="page_content" >
+  <div id="heading" style=" margin-left:50px"><h1>
+      <%= "Notifications " %></h1>
+
+    <% @notifications.each do |notification| %>
+
+    <%post = Post.find_by_id(notification.post_id)%>
+    <%sharer = User.find_by_id(post.user_id)%>
+    <%if notification.description.eql?("share")%>
+    <%=sharer.first_name%> has shared some post with you.
+    <%elsif notification.description.eql?("tagged")%>
+    <%=sharer.first_name%> has tagged you in some post.
+    <%end%>
+    <br/><br/>
+    <%end%>
+  </div>
+</div>
+
+<div id="footer"></div>

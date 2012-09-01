@@ -1,0 +1,118 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-size:11px;
+    font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+    background-color: #E1E9E2;
+    background: url(people.jpg) no-repeat;
+    background:100%;
+    color:#408080;
+    line-height:1.28;
+    text-align:left;
+    direction:ltr;
+}
+
+#masthead{
+    width:100%;
+    background-color: #0B610B;
+    height:20%;
+}
+
+#logo {
+    float:left;
+    height:20%;
+}
+
+#login {
+    background-color: #5A7C50;
+}
+
+#header {
+    margin-left: 25%;
+    height:100%;
+    color:white;
+    font-weight:normal;
+    font: normal 1.2em Georgia, "Times New Roman", Times, serif;
+}
+#table-signin {
+    float:right;
+    background-color: #5A7C50;
+}
+
+#container {
+    
+    margin: 0;
+    padding-top:10px;
+    padding-bottom:10px;
+    background-color: #E1E9E2;
+    color: #5A7C50;
+}
+
+#table-signup {
+    background-color: #5A7C50;
+}
+
+#footer{
+    border-color: #5A7C50;
+    border-top-width: 1;
+    border-style:none;
+    background-color: #E1E9E2;
+}
+
+a {color: #FFFFFF;text-decoration:none}
+
+a.linkStyle:link {color: #5A7C50;}
+a.linkStyle2:link {color: #FFFFFF;float:right;}
+a.linkStyle:active {color:#FFFFFF; text-decoration: none;}
+a.linkStyle:visited {color:#FFFFFF; text-decoration: none;}
+a.linkStyle:hover { text-decoration: underline;}
+
+
+
+#ticker{
+    height:200px;
+    width:200px;
+    overflow:hidden;
+    border:solid 1px #DEDEDE;
+    padding:6px 10px 14px 10px;
+    background:#F2F4F8;
+}
+#ticker li{
+    border:0;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+#ticker li{
+    height:60px;
+    padding:5px;
+    list-style:none;
+    display:block;
+    cursor:pointer;
+    border-bottom:1px dotted #CCCCCC;
+}
+#ticker li:hover{
+    background: #DDDDDD;
+}
+#ticker a{
+    color:#000000;
+}
+#ticker .title{
+    display:block;
+    font-weight:bold;
+    margin-bottom:4px;
+    font-size:11px;
+}
+#ticker .description{
+    display:block;
+    font-size:11px;
+    color:#666666;
+}
+#ticker img{
+    float:left;
+    margin-right:14px;
+    padding:4px;
+    background:white;
+    border:solid 1px #DEDEDE;
+}

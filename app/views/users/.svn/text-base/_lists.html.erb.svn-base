@@ -1,0 +1,8 @@
+<b><%= link_to "LISTS",:controller => "users", :action => "lists", :id => user.id %></b>
+  <br/><br/>
+  <div style="margin-left:10px">
+<% user.lists.each do |list| %>
+    <%= link_to list.name , :controller => "users",:action=> "show_list", :id => list.id%>
+    <br/>
+  <%end%>
+  </div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+      jQuery(function($) {
+        $(document).ready(function() {
+          alert('document ready');
+          $("#button-link")
+          .bind('ajax:success', function(evt, data, status, xhr) {alert(xhr.responseText);})
+        });
+      });
+    </script>
+    <%= javascript_include_tag 'rails' %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+  <body>
+    <%= form_tag({:controller => "users", :action => "formname"},  :remote=>true) do %>
+      <%= link_to "Get remote post", {:action => "post"},:remote => true, :id => "button-link" %>
+    <%end%>
+  </body>
+</html>

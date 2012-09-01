@@ -1,0 +1,31 @@
+<div id="header">
+</div>
+
+<br/><br/>
+
+<div id="container">
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+  </div>
+  <div id="page_content" >
+    <div id="heading" style=" margin-left:50px">
+      <div style="margin-left:5px;background-color:#E1F9F9;margin-right:200px;">
+    People who like this post<span style="float:right;margin-right:1px;"></span></div>
+    <br/><br/>
+      <%if @users.blank?%>
+        There are no likes for this post
+      <%else %>
+        <% @users.each do |friend| %>
+          <%= link_to friend.first_name , :controller => "users",:action=> "view_other_profile", :id => friend.id%>
+          <%= link_to friend.last_name , :controller => "users",:action=> "view_other_profile", :id => friend.id%>
+          <hr />
+          <br/>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+

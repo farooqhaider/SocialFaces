@@ -1,0 +1,51 @@
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_contact_info"}, {:name => "contactinfoform"}) do %>
+
+<div id="page_content">
+  <div style="float:left;margin-left:50px">
+    <%=label_tag(:address, "Address")%>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:address,@user.address,:size => 50)%>
+  </div>
+  <br/>
+  </div>
+
+  <div style="float:left;margin-left:50px;"><%=label_tag(:city, "Town/City")%>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:city,@user.address_towncity,:size => 50)%>
+  </div>
+  <br/>
+  </div>
+
+  <div style="float:left;margin-left:50px;padding-left:10px;">
+    <%=label_tag(:zip, "Zip")%>
+  <div style="margin-left:250px;margin-right:30px;">
+    <%=text_field_tag(:zip,@user.adress_zipcode,:size => 50)%>
+  </div>
+  <br/>
+  </div>
+
+  <div style="float:left;margin-left:50px;"><%=label_tag(:neighbourhood, "Neighbourhood")%>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:neighbourhood,@user.address_neighbourhood,:size => 50)%>
+  </div>
+  <hr/>
+  </div>
+
+  <div style="float:left;margin-left:50px;"><%=label_tag(:website, "Website")%>
+  <div style="margin-left:270px;">
+    <%=text_area_tag 'website', @user.website, :rows => 3, :cols => 50%>
+  </div>
+  <hr/>
+  </div>
+
+  <div style="float:left;margin-left:50px;">&nbsp;
+  <div style="margin-left:270px;"><a href="javascript:document.contactinfoform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+<%end%>
+<br/>
+</div>
+
+  </div>

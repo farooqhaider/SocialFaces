@@ -1,0 +1,113 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>Meet up ~ The place to meet everyone!! </title>
+    <%= stylesheet_link_tag "main", "session" %>
+    <%= csrf_meta_tag %>
+  </head>
+
+  <body class="body">
+    <div id="masthead" class="masthead" >
+      <div style="float:left">
+        <%= image_tag("meetup_large.png", :height => '135', :width => '320')%>
+        <br/>
+      </div>
+      <div id="header" class="header">
+        <%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
+          <table>
+            <tr>
+              <br/><br/>
+              <td>
+                <p> &nbsp;Email<br/>
+                  <%= f.text_field :email %><br/>
+                  <% if devise_mapping.rememberable? -%>
+                    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                  <% end -%>
+                </p>
+              </td>
+              <td>
+                <p>Password<br/>
+                  <%= f.password_field :password %><br/>
+                  <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                    <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+                  <% end -%>
+                </p>
+              </td>
+              <td style="width: 10%">
+                <%= f.submit "Log In" %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+    </div>
+     <div style="clear:both"></div>
+     <div align="center" style="float:left; padding: 0;height:50%;width:50%;">
+      <%= image_tag("logo2.png", :height => '55', :width => '450')%>
+      <br/>
+      <%= image_tag("logo3.png", :height => '40', :width => '200')%>
+      <%= image_tag("newpeople.png", :height => '35', :width => '190')%>
+      <br/>
+       <%= image_tag("people.jpg", :height => '335', :width => '620')%>
+    </div>
+
+
+     <div id="container" class="container" style="float:right;">
+            <h2>    Sign up to meet new people now... </h2>
+      <% #resource.session_id.build if resource.session_id.empty? %>
+  
+      <%= form_for(resource_name, resource, :url => registration_path(resource_name)) do |f| %>
+      
+        <table align="right" style="margin-right:80px;margin-left:10px;margin-top:20px; margin-bottom:10px">
+          <tr>
+            <td align="right"> </td>
+            <td><%= f.error_messages %> </td>
+          </tr>
+
+          <tr>
+            <td align="right">Email Address:</td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+
+          <tr>
+            <td align="right">New Password:</td>
+            <td><%= f.password_field :password %> </td>
+          </tr>
+          <tr>
+            <td align="right">Confirm Password:</td>
+            <td><%= f.password_field :password_confirmation %></td>
+          </tr>
+          <tr>
+            <td align="right">First Name:</td>
+            <td><%= f.text_field :first_name%></td>
+          </tr>
+          <tr>
+            <td align="right">Last Name:</td>
+            <td><%= f.text_field :last_name%></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><a href="Main%20Page.html"  class="linkStyle">Why do i need to Provide my date of birth?</a></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="right"><%= recaptcha_tags %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td align="center"><%= f.submit "Sign Up"%></td>
+          </tr>
+     
+       
+        </table>
+      <%end%>
+    </div>
+
+     <div style="float:left;margin-left: 400px;margin-right: 60px;margin-bottom: 10px;">
+       Copyrights 2012 (c) Meetup Team2 Inc.
+     </div>
+  </body>
+
+</html>

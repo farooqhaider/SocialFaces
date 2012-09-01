@@ -1,0 +1,13 @@
+<div id="container" >
+  <div id="page_content">
+    <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" Photos"} %>
+    </div>
+
+    <%for photo in @photos %>
+      test text
+      <%= link_to image_tag(photo.image.url ,:height => '170',:width => '220'), :controller => "photos",:action=> "show_photo", :id => photo.id%>
+    <%end%>
+  </div>
+</div>
+<div id="footer"></div>

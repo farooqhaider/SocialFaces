@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+<head>
+  <title>Meet up ~ The place to meet everyone!!</title>
+  <%= stylesheet_link_tag "edit_profile", "token-input-facebook" %>
+  <%= javascript_include_tag "jquery.min","jquery.tokeninput" %>
+  <%= csrf_meta_tag %>
+<style type="text/css">
+.style1 {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: medium;
+}
+</style>
+</head>
+<body>
+
+<div id="masthead">
+	      <div id="logo"><%= image_tag("meetup_small.png", :height => '55px', :width => '160px')%></div>
+      <div style="float:right; margin-right:30px; margin-top: 0px">
+        <span style="font-size: larger">
+          <%= link_to image_tag("profile.png", :height => '50px', :width => '80px'), :controller=> "users", :action => "show_profile", :id =>current_user.id%>&nbsp;&nbsp;
+          <%= link_to image_tag("sign_out.png", :height => '50px', :width => '110px'), :action=>"destroy", :controller=>"devise/sessions" %>&nbsp;&nbsp;
+        </span>
+      </div>
+	<div id="header">
+          
+	</div>
+</div>
+
+<div id="container">
+  <%= yield :heading %>
+	<div id="left_col">
+          <br/>
+          <div id="side"><%= image_tag("basic_info.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Basic Information", :controller => "edit_profiles", :action => "basic_info" %> </div>
+          <div><%= image_tag("profile_picture.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Profile Picture", :controller => "users", :action => "edit" %></div>
+          <div><%= image_tag("friends_family.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Friends and Family", :controller => "edit_profiles", :action => "friends_family" %> </div>
+          <div><%= image_tag("education_work.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Education and Work", :controller => "edit_profiles", :action => "education_work" %> </div>
+          <div><%= image_tag("arts_entertainment.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Arts and Entertainment", :controller => "edit_profiles", :action => "arts_entertainment" %> </div>
+          <div><%= image_tag("sport.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Sport", :controller => "edit_profiles", :action => "sport" %> </div>
+          <div><%= image_tag("activities_interests.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Activities and Interests", :controller => "edit_profiles", :action => "activities_interests" %></div>
+          <div><%= image_tag("contact_info.png", :height => '15', :width => '15')%>&nbsp;<%=  link_to "Contact Information", :controller => "edit_profiles", :action => "contact_info" %> </div>
+          
+	</div>
+          <hr/><br/>
+
+	<div id="page_content">
+        <%= yield %>
+        <br/>
+	</div>
+</div>
+  <div id="footer" align="center">
+    <p id="legal">Copyright &copy; 2012 Meetup Inc. Designed by Team 2</p>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+<%= link_to "Post Video" ,:controller=>"videos", :action=>"new" %>
+<%= link_to "Post an Album" ,:controller=>"albums", :action=>"new" %>
+<%= link_to "    Post a Photo to default album" ,:controller=>"photos", :action=>"new" %>

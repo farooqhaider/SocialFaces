@@ -1,0 +1,143 @@
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#tagged_users").tokenInput("/photos/gettaggedusers/",{
+      theme: "facebook",
+      preventDuplicates: true
+    });
+
+  });
+
+  function add_like(){
+    var text = document.getElementById('likeval').innerHTML;
+    var url = "";
+    if (text == "Like")
+    {
+      url = '/comments/like_content?user_id=1&content_id=1';
+    }
+    else
+    {
+      url = '/comments/unlike_content?user_id=1&content_id=1';
+    }
+    $.ajax({
+      url: url,
+      success: function(data){
+        if (text == "Like")
+        {
+          document.getElementById('likeval').innerHTML = 'Unlike';
+        }
+        else
+        {
+          document.getElementById('likeval').innerHTML = 'Like';
+        }
+      }
+    });
+
+
+  }
+
+  function insert_comment(){
+    var comment = document.getElementById('insert_comment').value;
+    if (comment == '')
+    {
+      return 0;
+    }
+    var url = "/comments/add_comment?user_id=1&comment="+comment;
+
+    $.ajax({
+      url: url,
+      success: function(data){
+        var comments_obj = document.getElementById('existingcomments');
+        var new_element = document.createElement("div");
+        var comm_id = "comment"+data;
+        var innerhtml = comment+"<div align='right' style='margin-right: 945px;'><a href='javascript:delete_comment("+'"'+comm_id+'"'+")'>Delete</a></div>";
+        new_element.id = comm_id;
+        new_element.innerHTML = innerhtml;
+        document.getElementById('insert_comment').value = "";
+        comments_obj.appendChild(new_element);
+      }
+    });
+
+  }
+
+  function delete_comment(comm_id){
+
+    var url = "/comments/delete_comment?user_id=1";
+    alert(comm_id);
+    $.ajax({
+      url: url,
+      success: function(data){
+        var comments_obj = document.getElementById('existingcomments');
+        var to_delete_element = document.getElementById(comm_id);
+        comments_obj.removeChild(to_delete_element);
+      }
+    });
+
+  }
+
+</script>
+<div id="heading">
+  <h1>
+    <%= "#{@user.first_name} #{@user.last_name} " %>
+    <%= image_tag("arrow.png")%>
+  </h1>
+  <div style="float:right">
+    <%= link_to image_tag("delete_photo.png",:height => '20',:width => '90'),
+      :controller => "photos", :action => "destroy", :id => @photo.id %>
+    <br/><br/>
+    Tag People:<br/>
+    <%= form_tag({:controller => "photos", :action => "tag_people"}) do %>
+      <%=text_field_tag(:tagged_users,nil,:size => 40, "data-pre" => @tagged_people_pre)%>
+      <%=hidden_field_tag(:photo_id,@photo.id)%>
+      <%=submit_tag("Tag")%>
+    <%end%>
+  </div>
+</div>
+
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%="Photos of "%> <%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+    <%= link_to "Albums", :controller => "photos", :action => "photos", :id => @user.id %><br/>
+    <%= link_to "Upload Photo", :controller => "photos", :action => "new", :id => @user.id %><br/>
+    <b><%= link_to "Create Album", :controller => "albums", :action => "new", :id => @user.id %></b><br/>
+    <%= link_to "Upload Video", :controller => "videos", :action => "new", :id => @user.id %>
+  </div>
+<div id ="page_content">
+
+  <div>
+    <%=  link_to image_tag(@photo.image.url,:height => '450',:width => '450') %>
+  </div>
+
+  <div>
+    Caption: <%= @photo.caption %> <br/>
+    Description: <%= @photo.description %><br/>
+    Tagged People: &nbsp;
+
+    <%for tagged_person in @tagged_people%>
+      <%= "#{tagged_person.first_name} #{tagged_person.last_name}" %><%= "," unless tagged_person.eql?(@tagged_people.last) %>
+    <%end%>
+
+    <br/><br/>
+    <a id="likeval" href="#" onclick="add_like()">Like</a>
+    <h3>Comments</h3>
+    <br/>
+    <div id="comments">
+      <div id="existingcomments">
+        <div id="comment1">
+          Hellooooooooo........
+          <%comm_id = "comment"+"1"%>
+          <div align="right" style="margin-right: 945px;"><a href="#" onclick="delete_comment('<%=comm_id%>')">Delete</a></div>
+        </div>
+      </div>
+
+      <div>
+        <textarea id="insert_comment" rows="2" cols="50"></textarea>
+        <br/>
+        <input type="button" id="add_comment" value="Comment" onclick="insert_comment()"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id ="footer"></div>

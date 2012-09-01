@@ -1,0 +1,57 @@
+<div>
+  <div style="width:100px;float:left;margin-left:20px;margin-top:5px;"></div>
+  <div style="width:400px;float:left;margin-top:10px;">
+    <div style ="float:left">
+      Gender:&nbsp;&nbsp;
+      <br/><br/>
+      Relationship <br/>
+      Status:&nbsp;&nbsp;
+      <br/><br/>
+      Interested in:&nbsp;&nbsp;
+      <br/><br/>
+      Languages:&nbsp;&nbsp;
+      <br/><br/>
+    </div>
+
+    <div style="float:left; margin-left:30px">
+      <div style="width:80px;float:left;margin-top:5px;">
+        <%if user.gender.eql?("male")%>
+          Male
+        <%elsif user.gender.eql?("female")%>
+          Female
+        <%end%>
+      </div>
+      <br/><br/>
+      <div style="width:80px;float:left;margin-top:5px;"><%=user.relationship_status%></div>
+      <br/><br/><br/>
+      <div style="width:80px;float:left;margin-top:5px;">
+        <%if user.interested_in.eql?("men")%>
+          Male
+        <%elsif user.interested_in.eql?("women")%>
+          Women
+        <%elsif user.interested_in.eql?("both")%>
+          Both
+        <%else%>
+          None
+        <%end%>
+      </div>
+      <br/><br/>
+      <div style="width:80px;float:left;margin-top:5px;">
+        <% if user.languages.blank? %>
+          None
+        <%else%>
+          <%for language in user.languages%>
+            <%=language.name%><%= "," unless language.eql?(user.languages.last) %>&nbsp;
+          <%end%>
+        <%end%>
+      </div>
+      <br/>
+    </div>
+
+    <div style="float:left; margin-left:30px">
+      About Me:&nbsp;&nbsp;
+      <br/><br/>
+      <div style="width:80px;float:left;margin-top:5px;"><%=user.about_me%></div>
+    </div>
+  </div>
+</div>

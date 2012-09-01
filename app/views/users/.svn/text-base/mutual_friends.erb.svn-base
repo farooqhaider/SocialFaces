@@ -1,0 +1,34 @@
+<div id="heading" style=" margin-left:150px">
+  <h2>Mutual Friends</h2>
+
+</div>
+<div id  ="page_content">
+<%unless @mutual_friends.blank?%>
+  <% @mutual_friends.each do |friend_user| %>
+    
+    <div style="float:left; margin-left:250px; margin-top: 10px">
+      <a href="/users/view_other_profile/<%=friend_user.id%>">
+        <%= if friend_user.photo.exists?
+          image_tag(friend_user.photo.url ,:height => '80',:width => '80')
+        else
+          if friend_user.gender.eql?("male")
+            image_tag("profile_picture_male.gif", :height => '80',:width => '80')
+          else
+            image_tag("profile_picture_female.gif", :height => '80', :width => '80')
+          end
+        end
+      %>
+      </a>
+    </div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{friend_user.first_name} #{friend_user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => friend_user.id%></h3>
+        
+      </div>
+   
+    <div style="clear:both;"></div>
+    <%= will_paginate @mutual_friends %>
+  <%end%>
+<%else%>
+  <br/>No results found.
+<%end%>
+</div>

@@ -1,0 +1,42 @@
+<div style="">
+  <div style="width:100px;float:left;margin-left:20px;margin-top:10px;"></div>
+  <div style="width:400px;float:left;margin-top:10px;">
+    <div style ="float:left">
+      Employers:&nbsp;&nbsp;
+      <br/>
+      Universities:&nbsp;&nbsp;
+      <br/>
+      Schools:&nbsp;&nbsp;
+    </div>
+
+    <div style="float:left; margin-left:10px">
+      <% if user.employers.blank? %>
+        None
+      <%else%>
+        <%for employer in user.employers%>
+          <%=employer.name%><%= "," unless employer.eql?(user.employers.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.universities.blank? %>
+        None
+      <%else%>
+        <%for university in user.universities%>
+          <%=university.name%><%= "," unless university.eql?(user.universities.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.schools.blank? %>
+        None
+      <%else%>
+        <%for school in user.schools%>
+          <%=school.name%><%= "," unless school.eql?(user.schools.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+    </div>
+
+  </div>
+</div>

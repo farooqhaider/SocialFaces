@@ -1,0 +1,74 @@
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<%= javascript_include_tag 'rails' %>
+<%= javascript_include_tag 'application' %>
+<%= javascript_include_tag "jquery.form", "fb_dssd","jquery.remotipart", "jquery-ui.min","jquery.tokeninput" %>
+
+<script type="text/javascript">
+
+  jQuery(function($) {
+    $(document).ready(function() {
+      $("#friends").tokenInput("/users/getsuggestions/",{
+        theme: "facebook",
+        preventDuplicates: true
+      });
+    });
+  });
+</script>
+
+<div id="left_col">
+  <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+  <hr/>
+  <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+   <br />
+  <hr/>
+  <%= render :partial => "lists", :locals => {:user=>@user} %>
+</div>
+<br/>
+
+<%=form_tag ({:controller=>"users", :action=>"share_content"})%>
+<%= hidden_field_tag 'post_id', @post.id %>
+
+<div id="page_content">
+  <div style ="margin-left:150px;">
+    <font color="red"><%=flash[:error_msg]%></font>
+    <div style="background-color:#E1F9F9;margin-right:200px;">
+      <b>Sharing posts </b>
+    </div><br/>
+    <% if @post.content_type.eql?("photo") %>
+      <%= image_tag(@photo.image.url, :height=>250,:width=>250) %>
+      <br/><%= @post.description%>
+    <%elsif(@post.content_type.eql?("status"))%>
+      <%= @post.caption %>
+      <%= @post.description %>
+    <%elsif @post.content_type.eql?("video")%>
+      <%= @post.description %>
+      <div id="container1">
+        <script type="text/javascript">
+          jwplayer("container1").setup({
+            flashplayer: "/flash/player.swf",
+            file: '<%= @video.source.url %>',
+            height: 300,
+            width: 350
+          });
+        </script>
+      </div>
+    <%elsif @post.content_type.eql?("album")%>
+      <%= @post.description %>
+    <%end%>
+
+    Caption <br/><%=  text_field_tag(:caption," Add a caption to your post ",:size =>50)%> <br/>
+    <div >
+    Tag your Friends <%=  text_field_tag(:friends,"",:size =>30)%><br/></div>
+    Description <br/><%=  text_field_tag(:description," Add a description to your post ",:size =>50)%> <br/>
+
+    <p>
+      <%=select_tag 'day', "<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>".html_safe %>
+      <%=select_tag 'month', "<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>".html_safe %>
+      <%=select_tag 'year', "<option>1980</option><option>1981</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option><option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option>".html_safe %>
+      <br/>
+      <%= submit_tag "Share" %>
+    </p>
+  </div>
+</div>

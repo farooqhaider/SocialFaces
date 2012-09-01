@@ -1,0 +1,503 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/development/!svn/ver/4103/Team2/Sprint4/db/migrate
+END
+20120212194156_create_friends.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120212194156_create_friends.rb
+END
+20120402155735_add_columns_to_share.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/3168/Team2/Sprint4/db/migrate/20120402155735_add_columns_to_share.rb
+END
+20120128165901_create_universities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128165901_create_universities.rb
+END
+20120128154017_create_users_books.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154017_create_users_books.rb
+END
+20120219134910_create_lists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120219134910_create_lists.rb
+END
+20120128162427_create_locations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128162427_create_locations.rb
+END
+20120305140136_rename_user_videos_and_adding_count_profile_visits.rb
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120305140136_rename_user_videos_and_adding_count_profile_visits.rb
+END
+20120128152920_create_inspiring_people.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128152920_create_inspiring_people.rb
+END
+20120128161403_create_schools.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128161403_create_schools.rb
+END
+20120128171540_create_users_emp_projects.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128171540_create_users_emp_projects.rb
+END
+20120402173709_create_notifications.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/3176/Team2/Sprint4/db/migrate/20120402173709_create_notifications.rb
+END
+20120302095226_create_albums_photos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302095226_create_albums_photos.rb
+END
+20120206110354_add_attachment_photo_to_user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120206110354_add_attachment_photo_to_user.rb
+END
+20120128143354_create_user_accounts.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128143354_create_user_accounts.rb
+END
+20120128154159_create_users_games.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154159_create_users_games.rb
+END
+20120128172224_create_with_projects.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128172224_create_with_projects.rb
+END
+20120331084249_create_shares.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/3168/Team2/Sprint4/db/migrate/20120331084249_create_shares.rb
+END
+20120128155206_create_sports.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128155206_create_sports.rb
+END
+20120304130226_create_users_albums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120304130226_create_users_albums.rb
+END
+20120302153046_create_friend_suggestions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302153046_create_friend_suggestions.rb
+END
+20120128153912_create_users_teams.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128153912_create_users_teams.rb
+END
+20120420001228_change_comments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/development/!svn/ver/3726/Team2/Sprint4/db/migrate/20120420001228_change_comments.rb
+END
+20120128152944_create_users_inspiring_people.rb
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128152944_create_users_inspiring_people.rb
+END
+20120128170047_create_users_employers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128170047_create_users_employers.rb
+END
+20120302093845_create_photos_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302093845_create_photos_users.rb
+END
+20120128154208_create_languages.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154208_create_languages.rb
+END
+20120331084237_create_posts.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2866/Team2/Sprint4/db/migrate/20120331084237_create_posts.rb
+END
+20120304134747_create_likes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120304134747_create_likes.rb
+END
+20120128155224_create_users_sports.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128155224_create_users_sports.rb
+END
+20120417102005_create_feeds.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/3539/Team2/Sprint4/db/migrate/20120417102005_create_feeds.rb
+END
+20120421001630_create_comment_likes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/4103/Team2/Sprint4/db/migrate/20120421001630_create_comment_likes.rb
+END
+20120128153518_create_athletes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128153518_create_athletes.rb
+END
+20120203005022_create_political_views.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120203005022_create_political_views.rb
+END
+20120128153854_create_teams.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128153854_create_teams.rb
+END
+20120206110044_devise_create_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120206110044_devise_create_users.rb
+END
+20120128154039_create_users_movies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154039_create_users_movies.rb
+END
+20120302151503_create_profile_visits.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302151503_create_profile_visits.rb
+END
+20120128154217_create_users_languages.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154217_create_users_languages.rb
+END
+20120128160047_create_users_emails.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128160047_create_users_emails.rb
+END
+20120128151003_create_activities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128151003_create_activities.rb
+END
+20120304130240_create_users_videos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120304130240_create_users_videos.rb
+END
+20120402181857_change_likes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/3176/Team2/Sprint4/db/migrate/20120402181857_change_likes.rb
+END
+20120329120309_add_indexes_to_tables_2.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/development/!svn/ver/2844/Team2/Sprint4/db/migrate/20120329120309_add_indexes_to_tables_2.rb
+END
+20120128154149_create_games.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154149_create_games.rb
+END
+20120219155950_create_users_schools.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120219155950_create_users_schools.rb
+END
+20120327064917_create_videos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2647/Team2/Sprint4/db/migrate/20120327064917_create_videos.rb
+END
+20120402180435_create_unfollowed_posts.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/development/!svn/ver/3176/Team2/Sprint4/db/migrate/20120402180435_create_unfollowed_posts.rb
+END
+20120128160106_create_users_im_names.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128160106_create_users_im_names.rb
+END
+20120128161759_create_religions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128161759_create_religions.rb
+END
+20120128154048_create_musics.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154048_create_musics.rb
+END
+20120302153644_create_report_abuses.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302153644_create_report_abuses.rb
+END
+20120128172730_create_users_universities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128172730_create_users_universities.rb
+END
+20120304132943_add_attachment_image_to_photos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120304132943_add_attachment_image_to_photos.rb
+END
+20120206110456_add_show_gender_bd_to_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120206110456_add_show_gender_bd_to_users.rb
+END
+20120419035635_create_unsubscriptions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/3726/Team2/Sprint4/db/migrate/20120419035635_create_unsubscriptions.rb
+END
+20120128161246_create_employers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128161246_create_employers.rb
+END
+20120219135056_create_users_lists.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120219135056_create_users_lists.rb
+END
+20120331183943_add_user_id_for_to_posts.rb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/development/!svn/ver/3098/Team2/Sprint4/db/migrate/20120331183943_add_user_id_for_to_posts.rb
+END
+20120128155241_create_with_sports.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128155241_create_with_sports.rb
+END
+20120331084414_create_posts_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/development/!svn/ver/2866/Team2/Sprint4/db/migrate/20120331084414_create_posts_users.rb
+END
+20120302153658_create_comments.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/development/!svn/ver/3001/Team2/Sprint4/db/migrate/20120302153658_create_comments.rb
+END
+20120128152510_create_with_activities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128152510_create_with_activities.rb
+END
+20120128154136_create_users_tv_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154136_create_users_tv_shows.rb
+END
+20120128153527_create_users_athletes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128153527_create_users_athletes.rb
+END
+20120417131802_change_feed_type_column_name.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/development/!svn/ver/3539/Team2/Sprint4/db/migrate/20120417131802_change_feed_type_column_name.rb
+END
+20120205205619_create_users_interests.rb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120205205619_create_users_interests.rb
+END
+20120331184807_add_created_at_to_friends.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/development/!svn/ver/2930/Team2/Sprint4/db/migrate/20120331184807_add_created_at_to_friends.rb
+END
+20120302071700_create_photos.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302071700_create_photos.rb
+END
+20120128154029_create_movies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154029_create_movies.rb
+END
+20120304130753_rename_albums_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120304130753_rename_albums_users.rb
+END
+20120212194222_create_requests.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120212194222_create_requests.rb
+END
+20120302095239_create_albums_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302095239_create_albums_users.rb
+END
+20120331084355_create_shares_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2866/Team2/Sprint4/db/migrate/20120331084355_create_shares_users.rb
+END
+20120128160618_create_im_agents.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128160618_create_im_agents.rb
+END
+20120128154008_create_books.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154008_create_books.rb
+END
+20120302095211_create_albums.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120302095211_create_albums.rb
+END
+20120128154127_create_tv_shows.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154127_create_tv_shows.rb
+END
+20120330114600_add_timestamps_to_photos_users.rb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/development/!svn/ver/2844/Team2/Sprint4/db/migrate/20120330114600_add_timestamps_to_photos_users.rb
+END
+20120205205558_create_interests.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120205205558_create_interests.rb
+END
+20120219142052_create_users_lists_friends.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120219142052_create_users_lists_friends.rb
+END
+20120128151238_create_users_activities.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128151238_create_users_activities.rb
+END
+20120207201242_add_indexes_to_tables_1.rb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120207201242_add_indexes_to_tables_1.rb
+END
+20120128154057_create_users_musics.rb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/development/!svn/ver/2312/Team2/Sprint4/db/migrate/20120128154057_create_users_musics.rb
+END

@@ -1,0 +1,78 @@
+<br/>
+<div id="left_col">
+  <% if @commonly_tag_photos.blank?%>
+    <%=  image_tag("friendship.png", :height => '130',:width => '180')%>
+  <%else%>
+    <%=  image_tag(@commonly_tag_photos.first.image.url, :height => '130',:width => '180')%>
+  <%end%>
+
+  <br/><br/><br/><br/>
+  <hr></hr>
+  <%unless @mutual_friends.blank?%>
+    <%= "Mutual Friends (#{@mutual_friends.size})" %>
+  <br/>
+    <%  for user_friend in @mutual_friends %>
+
+      <div style="width:40px;float:left;margin-top:10px;">
+        <a href="/users/view_other_profile/<%=user_friend.id%>">
+          <%= if user_friend.photo.exists?
+            image_tag(user_friend.photo.url ,:height => '50',:width => '50')
+          else
+            if user_friend.gender.eql?("male")
+              image_tag("profile_picture_male.gif", :height => '50',:width => '50')
+            else
+              image_tag("profile_picture_female.gif", :height => '50', :width => '50')
+            end
+          end
+        %>
+        </a></div>
+      <div style="width:80px;float:left;margin-left:20px;margin-top:10px;"><a href="/users/view_other_profile/<%=user_friend.id%>"><%= "#{user_friend.first_name} #{user_friend.last_name}" %></a></div>
+      <div style="clear:both;"></div>
+    <%end%>
+  <%else%>
+    No Mutual Friends
+  <%end%>
+
+
+  <% @mutual_friends %>
+</div>
+
+<div id="page_content">
+  <div id="heading">
+    <h2><%= "You and #{@friend.first_name} #{@friend.last_name}" %></h2>
+    
+    <% friendship_date = (Friend.find_by_user_id_and_friend_id(@user.id, @friend.id)).created_at.strftime("%B %Y") %>
+    <%= "Meet Up Friends since (You met here on) #{friendship_date}" %>
+    <%unless @common_employer.blank?%>
+      , Worked at <%=@common_employer.name%>
+    <%end%>
+    <%unless @common_university.blank?%>
+      , Studied at <%=@common_university.name%>
+    <%end%>
+    <%if @user.current_location_id.eql?(@friend.current_location_id)%>
+      , Lives in <%=(Location.find_by_id(@user.current_location_id)).name%>
+    <%end%>
+  </div>
+  <br/>
+  <div style="margin-left:50px;">
+    <div style="background-color:#E1E9E2;margin-right:200px;">
+      <b>Photos of you and <%= "#{@friend.first_name} #{@friend.last_name}" %> </b>
+    </div><br/>
+    <%for photo in @commonly_tag_photos %>
+      <%= link_to image_tag(photo.image.url ,:height => '170',:width => '220'), :controller => "photos",:action=> "show", :id => photo.id%>
+    <%end%>
+
+    <div style="background-color:#E1E9E2;margin-right:200px;">
+      <b>Photos commented by you or <%= "#{@friend.first_name} #{@friend.last_name}" %> </b>
+    </div><br/>
+    <%if !@commented.blank?%>
+
+    <%else%>
+      No common commented images!
+    <%end%>
+
+
+  </div>
+</div>
+
+<div id="footer"></div>

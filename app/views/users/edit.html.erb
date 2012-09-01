@@ -1,0 +1,44 @@
+<div id="heading"> 
+</div>
+
+<div id="right_col" style="margin-left: 20px">
+  <%form_tag({:action => "update_photo"}, {:multipart => true }) do %>
+
+    <div style=" float:left;">
+      <%= if @user.photo.exists?
+        image_tag(@user.photo.url ,:height => '170',:width => '220')
+      else
+        if @user.gender.eql?("male")
+          image_tag("profile_picture_male.gif", :height => '170',:width => '220')
+        else
+          image_tag("profile_picture_female.gif", :height => '170', :width => '220')
+        end
+      end %>
+    </div>
+
+    <div style="float:right; margin-right:20px">
+      <br/>
+      <%= label_tag ( "Select an image file on your computer (max 4 MB)")%>
+      <br/>
+      <%=  file_field_tag :image %>
+      <p>
+        <%= submit_tag 'Update'%>
+<%end%>
+      </p>
+
+      <%= label_tag ( "Before uploading a file make sure you have the right to distribute this picture and it does not offend any individual and/or religion, nationality, sect, cult, or culture and that it does not violate the")%>
+      <%= link_to "Terms of Service" , :controller => "users", :action=> "terms"%>
+    </div>
+
+ 
+  <div id ="footer"></div>
+</div>
+
+
+
+
+
+
+
+
+

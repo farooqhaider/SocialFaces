@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#activities").tokenInput("/edit_profiles/getactivities/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#activities').data('pre')
+    });
+    $("#interests").tokenInput("/edit_profiles/getinterests/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#interests').data('pre')
+    });
+  });
+</script>
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_activities"}, {:name => "activitiesform"}) do %>
+
+
+  <div style="float:left;margin-left:50px;">
+    <%=label_tag(:activities, "Activities")%>
+    <div style="margin-left:250px;margin-right:30px;">
+      <%=text_field_tag(:activities,nil,:size => 50, "data-pre" => @user_activities)%>
+    </div>
+    <hr/>
+  </div>
+  
+  <div style="float:left;margin-left:50px;"><%=label_tag(:interests, "Interests")%>
+    <div style="margin-left:250px;margin-right:30px;">
+      <%=text_field_tag(:interests,nil,:size => 50, "data-pre" => @user_interests)%>
+    </div>
+      <hr/>
+  </div>
+<br/>
+  <div style="float:left;margin-left:50px;">&nbsp;
+  <div style="margin-left:270px;"><a href="javascript:document.activitiesform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+<%end%>
+<br/></div>

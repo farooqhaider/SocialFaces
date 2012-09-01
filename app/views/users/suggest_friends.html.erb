@@ -1,0 +1,71 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#suggested_users").tokenInput("/users/getsuggestions/",{
+      theme: "facebook",
+      preventDuplicates: true
+    });
+    
+  });
+</script>
+
+<div id="heading" style=" margin-left:150px">
+  <h2>Suggest Users </h2>
+</div>
+<div style="margin-left: 400px;">
+  <%= form_tag({:controller => "users", :action => "suggest_to_user"}) do %>
+    <%=label_tag(:suggested_users, "Select Friends:")%>&nbsp;&nbsp;
+    <%=text_field_tag(:suggested_users,nil,:size => 50)%>
+    <%=hidden_field_tag(:suggestee_id,@suggestee.id)%>
+    <%=submit_tag("Suggest")%>
+  <%end%>
+</div>
+
+<div id ="page_content">
+<%unless @suggested_users.blank?%>
+  Recommended Suggestions
+  <br/><br/>
+  <% @suggested_users.each do |user| %>
+    <div style="float:left; margin-left:250px; margin-top: 10px">
+      <a href="/users/view_other_profile/<%=user.id%>">
+        <%= if user.photo.exists?
+          image_tag(user.photo.url ,:height => '80',:width => '80')
+        else
+          if user.gender.eql?("male")
+            image_tag("profile_picture_male.gif", :height => '80',:width => '80')
+          else
+            image_tag("profile_picture_female.gif", :height => '80', :width => '80')
+          end
+        end
+      %>
+      </a>
+    </div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{user.first_name} #{user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => user.id%></h3>
+      </div>
+    
+    <div style="clear:both;"></div>
+  <%end%>
+<%end%>
+<hr/>
+<% @friend_users.each do |user| %>
+  <div style="float:left; margin-left:250px; margin-top: 10px">
+    <a href="/users/view_other_profile/<%=user.id%>">
+      <%= if user.photo.exists?
+        image_tag(user.photo.url ,:height => '80',:width => '80')
+      else
+        if user.gender.eql?("male")
+          image_tag("profile_picture_male.gif", :height => '80',:width => '80')
+        else
+          image_tag("profile_picture_female.gif", :height => '80', :width => '80')
+        end
+      end
+    %>
+    </a>
+  </div>
+    <div style="float:left; margin-left:10px">
+      <h3><%= link_to "#{user.first_name} #{user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => user.id%></h3>
+    </div>
+  
+  <div style="clear:both;"></div>
+<%end%>
+</div>

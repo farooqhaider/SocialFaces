@@ -1,0 +1,107 @@
+<div>
+  <%user = User.find_by_id(user_id)%>
+  <%post = Post.find_by_id(post_id) %>
+  <% tagged_user_ids = PostsUser.find_all_by_post_id(post_id).collect(&:user_id) %>
+  <% tagged_people = User.find(:all, :conditions => ["id IN (?)",tagged_user_ids]) %>
+  <% tagged_people_names = Array.new%>
+  <% for user in tagged_people %>
+    <% tagged_people_names << "#{user.first_name.capitalize} #{user.last_name}" %>
+  <% end %>
+  <img style='float:left; margin-right:5px;' src='<%= post.user.photo.url %>' height='65' width='55' />
+
+  <b style='color :#408080;'><%=  post.user.first_name %> <%=  post.user.last_name %></b>
+  <span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(post.updated_at) %>&nbsp;ago </span>
+  <br/><span style='font-size:15px;'><%= post.caption %></span>
+
+  <% unless post.location_id.blank? %>
+    - at <%=post.location.name %>&nbsp;
+  <% end %>
+
+  <div style="margin-top:7px">
+    <span style="font-size:small;">
+      <%unless tagged_people_names.blank?%>
+        With <%=tagged_people_names.join(",")%>
+      <%end%>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%likes = (Like.find_all_by_post_id(post_id))%>
+      <a id="numlikes<%=post_id%>" href="/users/like_user?id=<%=post_id%>">
+        <%unless likes.blank?%>
+          <%num_likes = likes.size%>
+          <%=num_likes%> Likes
+        <%end%>
+      </a>
+    </span>
+
+  </div>
+  <div style="margin-top:7px">
+    <a id="like<%=post_id%>" href="javascript:add_like(<%=post_id%>,<%=current_user.id%>)" >
+      <%liked_post = Like.find_by_post_id_and_like_user_id(post_id,current_user.id)%>
+      <%if liked_post.blank?%>
+        Like
+      <%else%>
+        Unlike
+      <%end%>
+    </a>
+    <%= link_to "Comment" %>
+    <%= link_to "Share" , :controller => "users", :action => "share", :id=>post.id %>
+    <%unless(post.user_id.eql?(user.id))%>
+      <%= link_to "See Friendship" , :controller => "users", :action => "friendship", :id => user.id%>
+    <%end%>
+    <a id="unfollow<%=post_id%>" href="javascript:add_unfollow(<%=post_id%>,<%=current_user.id%>)" >
+      <%unfollowed_post = UnfollowedPost.find_by_post_id_and_user_id(post_id,current_user.id)%>
+      <%if unfollowed_post.blank?%>
+        Unfollow
+      <%else%>
+        Follow
+      <%end%>
+    </a>
+  </div>
+  <hr/>
+
+  <div id="comments<%=post_id%>">
+    <div id="existingcomments<%=post_id%>" style="background-color:#F2F4F8;  border-color: #E3F4F3; border:solid 1px;">
+
+      <%comments = Comment.find_all_by_post_id(post_id)%>
+      <%for comment in comments%>
+        <div id="comment<%=comment.id%>">
+          <%commentee_user = User.find_by_id(comment.commentee_user_id)%>
+          <%= "#{commentee_user.first_name} #{commentee_user.last_name}" %>
+          <br/>
+          <%=comment.description%>
+          <br/>
+          <a id="comment_like<%=comment.id%>" href="javascript:add_comment_like(<%=comment.id%>,<%=current_user.id%>)" >
+            <%liked_post = CommentLike.find_by_comment_id_and_like_user_id(comment.id,current_user.id)%>
+            <%if liked_post.blank?%>
+              Like
+            <%else%>
+              Unlike
+            <%end%>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%likes = (CommentLike.find_all_by_comment_id(comment.id))%>
+          <a id="numcommentlikes<%=comment.id%>" href="/users/comment_like_user?id=<%=comment.id%>">
+            <%unless likes.blank?%>
+              <%num_likes = likes.size%>
+              <%=num_likes%> Likes
+            <%end%>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%=time_ago_in_words(comment.created_at) %>&nbsp;ago
+        </div>
+      <hr/>
+      <%end%>
+    </div>
+
+
+    <div>
+      <textarea id="insert_comment<%=post_id%>" rows="2" cols="50"></textarea>
+      <br/>
+      <input type="button" id="add_comment" value="Comment" onclick="insert_comment(<%=post_id%>)"/>
+    </div>
+  </div>
+</div>
+<hr/>
+
+

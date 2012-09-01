@@ -1,0 +1,299 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/development/!svn/ver/4155/Team2/Sprint4/app/views/users
+END
+search.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/development/!svn/ver/3441/Team2/Sprint4/app/views/users/search.html.erb
+END
+_status_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/3137/Team2/Sprint4/app/views/users/_status_form.html.erb
+END
+_upload_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/3137/Team2/Sprint4/app/views/users/_upload_form.html.erb
+END
+notifications.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/development/!svn/ver/3190/Team2/Sprint4/app/views/users/notifications.erb
+END
+show_list.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/3001/Team2/Sprint4/app/views/users/show_list.html.erb
+END
+_photo_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/development/!svn/ver/3137/Team2/Sprint4/app/views/users/_photo_form.html.erb
+END
+_feed_friendship.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/development/!svn/ver/4141/Team2/Sprint4/app/views/users/_feed_friendship.html.erb
+END
+mutual_friends.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/2717/Team2/Sprint4/app/views/users/mutual_friends.erb
+END
+test.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/3017/Team2/Sprint4/app/views/users/test.html.erb
+END
+_arts_entertainment_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/development/!svn/ver/3333/Team2/Sprint4/app/views/users/_arts_entertainment_info.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/users/show.html.erb
+END
+like_user.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/3186/Team2/Sprint4/app/views/users/like_user.html.erb
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/2428/Team2/Sprint4/app/views/users/edit.html.erb
+END
+_upload_status.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/development/!svn/ver/4192/Team2/Sprint4/app/views/users/_upload_status.html.erb
+END
+_user_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/development/!svn/ver/3733/Team2/Sprint4/app/views/users/_user_info.html.erb
+END
+_tabs.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/4126/Team2/Sprint4/app/views/users/_tabs.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/development/!svn/ver/2425/Team2/Sprint4/app/views/users/new.html.erb
+END
+friends.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/development/!svn/ver/4125/Team2/Sprint4/app/views/users/friends.html.erb
+END
+_profile_pic.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/3632/Team2/Sprint4/app/views/users/_profile_pic.html.erb
+END
+suggest_friends.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/development/!svn/ver/3733/Team2/Sprint4/app/views/users/suggest_friends.html.erb
+END
+_upload_photo.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/4192/Team2/Sprint4/app/views/users/_upload_photo.html.erb
+END
+photos_of_you.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/3227/Team2/Sprint4/app/views/users/photos_of_you.html.erb
+END
+lists.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/3733/Team2/Sprint4/app/views/users/lists.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/users/_form.html.erb
+END
+share.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/4155/Team2/Sprint4/app/views/users/share.html.erb
+END
+_contact_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/3629/Team2/Sprint4/app/views/users/_contact_info.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/users/index.html.erb
+END
+_upload_video.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/4192/Team2/Sprint4/app/views/users/_upload_video.html.erb
+END
+requests.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/development/!svn/ver/3001/Team2/Sprint4/app/views/users/requests.html.erb
+END
+_activities_interests_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/development/!svn/ver/3333/Team2/Sprint4/app/views/users/_activities_interests_info.html.erb
+END
+status.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/development/!svn/ver/3186/Team2/Sprint4/app/views/users/status.erb
+END
+_work_education_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/development/!svn/ver/3333/Team2/Sprint4/app/views/users/_work_education_info.html.erb
+END
+_video_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/development/!svn/ver/3137/Team2/Sprint4/app/views/users/_video_form.html.erb
+END
+_friends.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/development/!svn/ver/3333/Team2/Sprint4/app/views/users/_friends.html.erb
+END
+terms.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/2312/Team2/Sprint4/app/views/users/terms.html.erb
+END
+_basic_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/development/!svn/ver/3628/Team2/Sprint4/app/views/users/_basic_info.html.erb
+END
+view_other_profile.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/development/!svn/ver/3733/Team2/Sprint4/app/views/users/view_other_profile.html.erb
+END
+friendship.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/development/!svn/ver/4138/Team2/Sprint4/app/views/users/friendship.html.erb
+END
+_lists.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/development/!svn/ver/3631/Team2/Sprint4/app/views/users/_lists.html.erb
+END
+wall.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/4137/Team2/Sprint4/app/views/users/wall.html.erb
+END
+_left_col_tabs.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/development/!svn/ver/3630/Team2/Sprint4/app/views/users/_left_col_tabs.html.erb
+END
+news_feed.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/4145/Team2/Sprint4/app/views/users/news_feed.html.erb
+END
+_userhead.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/development/!svn/ver/3811/Team2/Sprint4/app/views/users/_userhead.html.erb
+END
+show_profile.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/4094/Team2/Sprint4/app/views/users/show_profile.html.erb
+END
+friend_suggestions.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/development/!svn/ver/3441/Team2/Sprint4/app/views/users/friend_suggestions.html.erb
+END
+all_suggestions.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/development/!svn/ver/3441/Team2/Sprint4/app/views/users/all_suggestions.html.erb
+END
+photos_by_you.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/3227/Team2/Sprint4/app/views/users/photos_by_you.html.erb
+END
+_feed_ticker.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/4145/Team2/Sprint4/app/views/users/_feed_ticker.html.erb
+END
+_sports_info.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/development/!svn/ver/3333/Team2/Sprint4/app/views/users/_sports_info.html.erb
+END

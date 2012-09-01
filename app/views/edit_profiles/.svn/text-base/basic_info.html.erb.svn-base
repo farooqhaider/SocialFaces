@@ -1,0 +1,102 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#languages").tokenInput("/edit_profiles/getlanguages/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#languages').data('pre')
+    });
+  });
+</script>
+
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+<div id="page_content">
+  <%= form_tag({:controller => "edit_profiles", :action => "update_basic_info"}, {:name => "basicinfoform"}) do %>
+
+    <div style="float:left;margin-top:5px;">
+      <%=label_tag(:curr_location, "Current Location")%>
+      <div style="margin-left:150px;">
+        <% unless @user.current_location.blank? %>
+          <%=text_field_tag(:curr_location,@user.current_location.name,:size => 50)%>
+        <%else%>
+          <%=text_field_tag(:curr_location,nil,:size => 50)%>
+        <%end%>
+      </div>
+      <br/>
+    </div>
+
+    <div style="float:left;"><%=label_tag(:hometown, "Hometown")%>
+      <div style="margin-left:150px;">
+        <%unless @user.hometown.blank?%>
+          <%=text_field_tag(:hometown,@user.hometown.name,:size => 50)%>
+        <%else%>
+          <%=text_field_tag(:hometown,nil,:size => 50)%>
+        <%end%>
+      </div>
+      <hr/>
+    </div>
+
+    <div style="float:left;">
+      <%=label_tag(:gender, "I am")%>
+      <div style="margin-left:150px;">
+        <%=select_tag "gender", "<option>male</option><option>female</option>".html_safe %></div>
+
+      <div style="float:left;">&nbsp;
+        <div style="margin-left:150px;"><%=check_box_tag "show_gender", "show_gender", true %>&nbsp;Show my gender in my profile</div>
+
+      </div>
+<hr/>
+    </div>      
+
+    <div style="float:left;">Birthday
+      <div style="margin-left:150px;margin-right:30px;">
+        <%=select_tag "bd_day", "<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>".html_safe %>
+        <%=select_tag "bd_month", "<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>".html_safe %>
+        <%=select_tag "bd_year", "<option>1980</option><option>1981</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option><option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option>".html_safe %>
+      </div>
+      <br/>
+      <div style="float:left;">&nbsp;</div>
+      <div style="margin-left:150px;margin-right:30px;"><%=select_tag "show_bd", "<option>Show my full date of birth in my profile</option><option>Show only day and month in my profile</option><option>Don't show my birthday in my profile</option>".html_safe %></div>
+      <hr/>
+    </div>
+
+    <div style="float:left;"><%=label_tag(:interested_in, "Interested in") %>
+      <div style="margin-left:150px;margin-right:30px;">
+        <% if @user.interested_in.eql?("both") %>
+          <%= check_box_tag "interested_women", "interested_women", true %>Women &nbsp;&nbsp;
+          <%= check_box_tag "interested_men", "interested_men", true %>Men
+        <%elsif @user.interested_in.eql?("men")%>
+          <%= check_box_tag "interested_women", "interested_women", false %>Women &nbsp;&nbsp;
+          <%= check_box_tag "interested_men", "interested_men", true %>Men
+        <%elsif @user.interested_in.eql?("women")%>
+          <%= check_box_tag "interested_women", "interested_women", true %>Women &nbsp;&nbsp;
+          <%= check_box_tag "interested_men", "interested_men", false %>Men
+        <%else%>
+          <%= check_box_tag "interested_women", "interested_women", false %>Women &nbsp;&nbsp;
+          <%= check_box_tag "interested_men", "interested_men", false %>Men
+        <%end%>
+      </div>
+      <hr/>
+    </div>
+
+    <div style="float:left;"><%=label_tag(:languages, "Languages")%>
+      <div style="margin-left:150px;margin-right:30px;">
+        <%=  text_field_tag(:languages,nil,:size => 50, "data-pre" => @user_languages)%></div>
+      <hr/>
+    </div>
+    <div style="float:left;"><%=label_tag(:about_me, "About me")%>
+      <div style="margin-left:150px;margin-right:30px;"><%=text_area_tag 'about_me', @user.about_me, :rows => 5, :cols => 50%></div>
+      <hr/>
+    </div>
+
+    <div style="float:left;">&nbsp;
+      <div style="margin-left:150px;">
+        <a href="javascript:document.basicinfoform.submit()"><%=image_tag("phil_save_changes.png")%></a>
+      </div>
+    <% end %>
+
+    <br/>
+  </div>
+</div>

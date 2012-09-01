@@ -1,0 +1,60 @@
+
+<div id="container" >
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <%= render :partial => "albums/photos_menu", :locals => {:user=>@user} %>
+  </div>
+
+  <div id ="page_content">
+    <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" Creating a new Album"} %>
+    </div>
+
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+      <b>New Album - Step 1 </b><span style="float:right;margin-left:10px;">
+        <%=link_to "Back to My Photos", :controller => "photos", :action => "index", :id => @user.id%>
+      </span></div>
+    <br/>
+
+    <div style="margin-left:50px;margin-right:200px;">
+      You need to enter some information before your album could be created.
+      <br/>This would just take a while...
+      <%form_tag({:action => "create"}, {:multipart => true }) do %>
+
+        <div style="width:700px;float:left;margin-top:10px;">
+          <div style ="float:left">
+            Title:&nbsp;&nbsp;
+            <br/><br/>
+            Description :&nbsp;&nbsp;
+            <br/><br/><br/>
+            Date (it all happened) :&nbsp;&nbsp;
+            <br/><br/>
+            High Quality:&nbsp;&nbsp;
+            <br/><br/>
+            Select the photo :&nbsp;&nbsp;
+          </div>
+
+          <div style="float:left; ">
+            <%= text_field_tag  'title', @title %>
+            <br/><br/>
+            <%= text_field_tag 'description', @description %>
+            <br/><br/>
+            <%=select_tag 'day', "<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>".html_safe %>
+            <%=select_tag 'month', "<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>".html_safe %>
+            <%=select_tag 'year', "<option>1980</option><option>1981</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option><option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1990</option><option>1991</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option><option>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option><option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option><option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option>".html_safe %>
+            <br/><br/>
+             <%=check_box_tag 'quality', @quality %>
+            <br/><br/>
+            <%=  file_field_tag :photo %>
+            <br/><br/>
+            <%= submit_tag 'Create' %>
+          <%end%>
+        </div>
+
+      </div>
+
+  </div>
+</div>
+</div>
+<div id ="footer"></div>

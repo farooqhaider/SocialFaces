@@ -1,0 +1,178 @@
+<script type="text/javascript">
+  function add_like(){
+    var text = document.getElementById('likeval').innerHTML;
+    var url = "";
+    if (text == "Like")
+    {
+      url = '/comments/like_content?user_id=1&content_id=1';
+    }
+    else
+    {
+      url = '/comments/unlike_content?user_id=1&content_id=1';
+    }
+    $.ajax({
+      url: url,
+      success: function(data){
+        if (text == "Like")
+        {
+          document.getElementById('likeval').innerHTML = 'Unlike';
+        }
+        else
+        {
+          document.getElementById('likeval').innerHTML = 'Like';
+        }
+      }
+    });
+
+
+  }
+
+  function insert_comment(){
+    var comment = document.getElementById('insert_comment').value;
+    if (comment == '')
+    {
+      return 0;
+    }
+    var url = "/comments/add_comment?user_id=1&comment="+comment;
+
+    $.ajax({
+      url: url,
+      success: function(data){
+        var comments_obj = document.getElementById('existingcomments');
+        var new_element = document.createElement("div");
+        var comm_id = "comment"+data;
+        var innerhtml = comment+"<div align='right' style='margin-right: 945px;'><a href='javascript:delete_comment("+'"'+comm_id+'"'+")'>Delete</a></div>";
+        new_element.id = comm_id;
+        new_element.innerHTML = innerhtml;
+        document.getElementById('insert_comment').value = "";
+        comments_obj.appendChild(new_element);
+      }
+    });
+
+  }
+
+  function delete_comment(comm_id){
+
+    var url = "/comments/delete_comment?user_id=1";
+    alert(comm_id);
+    $.ajax({
+      url: url,
+      success: function(data){
+        var comments_obj = document.getElementById('existingcomments');
+        var to_delete_element = document.getElementById(comm_id);
+        comments_obj.removeChild(to_delete_element);
+      }
+    });
+
+  }
+
+</script>
+
+<div id= "left_col" style="float:left; margin-left:20px;">
+  <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+  <br/><br/><br/>
+  <%= render :partial => "albums/photos_menu", :locals => {:user=>@user} %>
+</div>
+
+
+<div id ="page_content">
+   <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+        <b>Displaying all Videos </b><span style="float:right;margin-left:10px;">
+          <%=link_to "Back to My Videos", :controller => "photos", :action => "index", :id => @user.id%>
+        </span></div>
+  
+    <div style="margin-left:50px;margin-right:200px;">
+
+      Loading the player ...
+  
+    
+    <div style="border:#408080 solid 1px; width:41%; height: 70%; float:right ">
+      <table>
+        <tr>
+          <td>
+            Title :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.title%>
+          </td>
+        <tr>
+          <td>
+            State :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.state%>
+          </td>
+        </tr></tr>
+
+        <tr>
+          <td>
+            Description :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.description%>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Caption :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.caption%>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Location :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.location%>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Date :
+          </td>
+          <td style="color:#408080; text-align:left;"> <%= @video.date%>
+          </td>
+        </tr>
+      </table>
+      <br></br>
+      <span style =" text-align:center ">
+        <%= button_to "Edit Video" ,:controller=> "videos", :action => "edit", :id => @video.id%>
+      </span>
+    </div>
+  </div>
+
+  <br/>
+  <div id="page_content" style =" margin-left: 150px; clear: both;">
+    <a id="likeval" href="#" onclick="add_like()">Like</a>
+    <br/><br/>
+    <h3>Comments</h3>
+    <br/>
+    <div id="comments">
+      <div id="existingcomments">
+
+        <div id="comment1">
+          Hellooooooooo........
+          <%comm_id = "comment"+"1"%>
+          <div align="right" style="margin-right: 945px;"><a href="#" onclick="delete_comment('<%=comm_id%>')">Delete</a></div>
+        </div>
+      </div>
+      <div>
+        <textarea id="insert_comment" rows="2" cols="50"></textarea>
+        <br/>
+        <input type="button" id="add_comment" value="Comment" onclick="insert_comment()"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id ="footer"></div>
+
+
+
+<script type="text/javascript">
+  jwplayer("container1").setup({
+    flashplayer: "/flash/player.swf",
+    file: '<%= @video.source.url %>',
+    height: 350,
+    width: 487
+  });
+</script>

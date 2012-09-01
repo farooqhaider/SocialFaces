@@ -1,0 +1,35 @@
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%="Photos of "%> <%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+    <%= link_to "Albums", :controller => "photos", :action => "index", :id => @user.id %><br/>
+    <%= link_to "Upload Photo", :controller => "photos", :action => "new", :id => @user.id %><br/>
+    <b><%= link_to "Create Album", :controller => "albums", :action => "new", :id => @user.id %></b><br/>
+    <%= link_to "Upload Video", :controller => "videos", :action => "new", :id => @user.id %>
+  </div>
+
+<div id ="page_content">
+  <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" #{@album.title.capitalize}"} %>
+  </div>
+  <%form_tag({:action => "upload_photos"}, {:multipart => true }) do %>
+  <%= hidden_field_tag 'album_id', @album.id %>
+
+    <p> Add photos to your album <%= "#{@album.title} " %> </p>
+    <p><%=  file_field_tag "photo1" %></p>
+    <p><%=  file_field_tag "photo2"%></p>
+    <p><%=  file_field_tag "photo3" %></p>
+    <p><%=  file_field_tag "photo4" %></p>
+    <p><%=  file_field_tag "photo5" %></p>
+   
+    select the check box to post the album
+    <%=check_box_tag 'posted', @posted %>
+
+    select the check box to follow the album
+    <%=check_box_tag 'followed', @followed %>
+
+    <%= submit_tag 'Upload' %>
+  <%end%>
+</div>
+
+<div id ="footer"></div>

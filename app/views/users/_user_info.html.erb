@@ -1,0 +1,16 @@
+<h2><%= "#{user.first_name.capitalize} #{user.last_name}" %></h2>
+<% unless user.current_location.blank? %>
+  Lives in <%=user.current_location.name %>&nbsp;
+<% end %>
+<% unless user.hometown.blank? %>
+  From <%=user.hometown.name%>&nbsp;
+<% end %>
+
+<%  if user.show_bd.eql?("full")%>
+
+  Born on&nbsp;<%=user.dob.strftime("%d %B %Y")%>
+<%elsif user.show_bd.eql?("dayandmonth")%>
+  Born on&nbsp;            <%=user.dob.strftime("%d %B")%>
+<%end%>
+
+<hr/>

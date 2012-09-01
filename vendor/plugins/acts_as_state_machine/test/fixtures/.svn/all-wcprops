@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/development/!svn/ver/2647/Team2/Sprint4/vendor/plugins/acts_as_state_machine/test/fixtures
+END
+person.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/development/!svn/ver/2647/Team2/Sprint4/vendor/plugins/acts_as_state_machine/test/fixtures/person.rb
+END
+conversation.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/development/!svn/ver/2647/Team2/Sprint4/vendor/plugins/acts_as_state_machine/test/fixtures/conversation.rb
+END
+conversations.yml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/development/!svn/ver/2647/Team2/Sprint4/vendor/plugins/acts_as_state_machine/test/fixtures/conversations.yml
+END

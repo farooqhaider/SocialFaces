@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/development/!svn/ver/3539/Team2/Sprint4/test/fixtures
+END
+users.yml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/development/!svn/ver/2312/Team2/Sprint4/test/fixtures/users.yml
+END
+feeds.yml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/development/!svn/ver/3539/Team2/Sprint4/test/fixtures/feeds.yml
+END
+videos.yml
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/development/!svn/ver/2647/Team2/Sprint4/test/fixtures/videos.yml
+END

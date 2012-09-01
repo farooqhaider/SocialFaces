@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/development/!svn/ver/4137/Team2/Sprint4/app/views/albums
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/3809/Team2/Sprint4/app/views/albums/edit.html.erb
+END
+upload2.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/development/!svn/ver/3809/Team2/Sprint4/app/views/albums/upload2.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/development/!svn/ver/3809/Team2/Sprint4/app/views/albums/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/development/!svn/ver/4098/Team2/Sprint4/app/views/albums/new.html.erb
+END
+_photos_menu.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/development/!svn/ver/3809/Team2/Sprint4/app/views/albums/_photos_menu.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/development/!svn/ver/4137/Team2/Sprint4/app/views/albums/show.html.erb
+END
+upload.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/development/!svn/ver/3809/Team2/Sprint4/app/views/albums/upload.html.erb
+END

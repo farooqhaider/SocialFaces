@@ -1,0 +1,35 @@
+<div id ="container">
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+    <br/><br/><br/>
+    <h3><%="Photos of "%> <%= link_to @user.first_name , :controller => "users", :action=> "view_other_profile", :id => @user.id%></h3>
+    <%= link_to "Albums", :controller => "photos", :action => "index"%><br/>
+    <%= link_to "Upload Photo", :controller => "photos", :action => "new", :id => @user.id %><br/>
+    <b><%= link_to "Create Album", :controller => "albums", :action => "new", :id => @user.id %></b><br/>
+    <%= link_to "Upload Video", :controller => "videos", :action => "new", :id => @user.id %>
+  </div>
+
+  <div id ="page_content">
+    <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" Albums"} %>
+    </div>
+    <% @albums.each do |album|%>
+      <div style ="float:left">
+        <%unless(album.photos.blank?)%>
+          <% if(album.cover.blank?)%>
+            <%=link_to image_tag(album.photos.first.image.url ,:height => '170',:width => '220'), :controller => "albums",:action=> "show", :id => album.id%>
+          <%else%>
+            <%=link_to image_tag(album.cover.image.url ,:height => '170',:width => '220'), :controller => "albums",:action=> "show", :id => album.id%>
+          <%end%>
+        <%else %>
+          <%=link_to image_tag("profile_picture_male.gif" ,:height => '170',:width => '220'), :controller => "albums",:action=> "show", :id => album.id%>
+        <%end%>
+        <br/>
+        <%=link_to album.title, :controller => "albums",:action=> "show",  :user_id => @user.id, :album_id => album.id%><br/>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<div id ="footer">
+</div>

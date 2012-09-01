@@ -1,0 +1,49 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#sports").tokenInput("/edit_profiles/getsports/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#sports').data('pre')
+    });
+    $("#teams").tokenInput("/edit_profiles/getteams/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#teams').data('pre')
+    });
+    $("#athletes").tokenInput("/edit_profiles/getathletes/",{
+      theme: "facebook",
+      preventDuplicates: true,
+      prePopulate: $('#athletes').data('pre')
+    });
+  });
+</script>
+
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_sports"}, {:name => "sportsform"}) do %>
+
+	<div style="float:left;margin-left:50px;">
+          <%=label_tag(:sports, "Favourite sports")%>
+	<div style="margin-left:270px;">
+          <%=text_field_tag(:sports,nil,:size => 50, "data-pre" => @user_sports)%>
+          </div>
+	<hr/>
+        </div>
+	<div style="float:left;margin-left:50px;"><%=label_tag(:teams, "Favourite teams")%>
+	<div style="margin-left:270px;">
+          <%=text_field_tag(:teams,nil,:size => 50, "data-pre" => @user_teams)%>
+          </div>
+	<hr/>
+        </div>
+	<div style="float:left;margin-left:50px;"><%=label_tag(:athletes, "Favourite athletes")%>
+	<div style="margin-left:270px;">
+          <%=text_field_tag(:athletes,nil,:size => 50, "data-pre" => @user_athletes)%>
+          </div>
+	<hr/>
+        </div>
+	<div style="float:left;margin-left:50px;">&nbsp;
+	<div style="margin-left:270px;"><a href="javascript:document.sportsform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+	<%end%>
+        <br/></div>

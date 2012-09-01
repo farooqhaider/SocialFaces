@@ -1,0 +1,4 @@
+
+<%=  text_field_tag(:description," Description of the Photo? ",:size =>20,:class =>"info_text", :onfocus =>"if (this.value==this.defaultValue) this.value = ''", :onblur =>"if (this.value=='') this.value = this.defaultValue")%>
+<%= label_tag ( "Select an image file on your computer (max 4 MB)")%>
+<%=file_field_tag(:photo,:size =>20)%>

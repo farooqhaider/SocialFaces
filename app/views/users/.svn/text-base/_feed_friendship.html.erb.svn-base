@@ -1,0 +1,9 @@
+<br></br>
+  <%friendship = Friend.find_by_id(post_id)%>
+<a href="/users/view_other_profile/<%=friendship.user.id%>"><%= "#{friendship.user.first_name.capitalize} #{friendship.user.last_name}" %></a>
+ 
+  and
+  <a href="/users/view_other_profile/<%=friendship.friend.id%>"><%= "#{friendship.friend.first_name.capitalize} #{friendship.friend.last_name}" %></a>
+  are now friends.
+<span style="text-align:right; float: right; font-size:12px; margin-top: 8px;"><%=time_ago_in_words(friendship.created_at) %>&nbsp;ago </span>
+  <hr/>

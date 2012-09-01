@@ -1,0 +1,77 @@
+
+
+<div id="container" >
+  <div id= "left_col" style="float:left; margin-left:20px;">
+    <%= render :partial => "users/profile_pic", :locals => {:user=>@user} %>
+     <br/><br/><br/>
+    <%= render :partial => "albums/photos_menu", :locals => {:user=>@user} %>
+  </div>
+
+  <% form_for :video, :url => { :action => "create" }, :html => { :multipart => true } do |f| %>
+
+    <div id ="page_content">
+      <div id="heading">
+      <%= render :partial => "users/userhead", :locals => {:str_val=>" Upload a Video"} %>
+    </div>
+
+      <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+        <b>Uploding a new video </b><span style="float:right;margin-left:10px;">
+          <%=link_to "Back to My Videos", :controller => "photos", :action => "index", :id => @user.id%>
+        </span></div>
+      <br/>
+
+      <div style="margin-left:50px;margin-right:200px;">
+        <%= f.error_messages %>
+
+        <table>
+          <tr>
+            <td>
+              <%= f.label :title %>
+            </td><td>
+              <%= f.text_field :title  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :caption %>
+            </td><td>
+              <%= f.text_area :caption, :rows=>"2", :cols =>"42"  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :description %>
+            </td><td>
+              <%= f.text_area :description, :rows=>"4", :cols =>"42"  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :Location %>
+            </td><td>
+              <%= f.text_field :location  %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :Date %>
+            </td><td>
+              <%=  f.date_select :date %>
+
+            </td>
+          </tr>
+
+        </table>
+        <%= label_tag ( "Select a video file on your computer")%>
+
+        <br/><br/>
+        <%= f.file_field :source %><br/><br/>
+       
+        <p>
+          <%= f.submit 'Upload', :class => 'submit' %>
+        </p>
+      </div>
+    </div>
+  <%end%>
+</div>
+<div id ="footer"></div>

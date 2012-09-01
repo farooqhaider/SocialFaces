@@ -1,0 +1,91 @@
+<%unless feeds.blank?%>
+<% for feed in @feeds %>
+<%user = User.find_by_id(feed.user_id)%>
+<li onmouseover='post_detial(<%=feed.post_id%>)' onmouseout="">
+           <img src='<%= user.photo.url %>' height='30' width='30' />
+          <span class="title"><%= user.first_name %> <%= user.last_name %></span>
+          <span class="description">
+          <%if feed.feed_type.eql?(FEED_TYPE_POST)%>
+          <%post = Post.find_by_id(feed.post_id)%>
+          <%  if post.content_type.eql?("photo")  %>
+            posted a photo
+          <%  elsif post.content_type.eql?("video")%>
+            posted a video
+ <%  else %>
+          <%=  post.caption %>
+          <% end%>
+      <%elsif feed.feed_type.eql?(FEED_TYPE_LIKE)%>
+           <%post = Post.find_by_id(feed.post_id)%>
+              likes the
+              <%= post.user.first_name.capitalize %>
+              <%= post.user.last_name.capitalize %>'s
+
+              
+          <%  if post.content_type.eql?("photo")  %>
+          photo
+          <%  elsif post.content_type.eql?("video")%>
+           video
+          <%  else %>
+           status
+          <% end%>
+
+
+      <%elsif feed.feed_type.eql?(FEED_TYPE_SHARE)%>
+
+           <%user = User.find_by_id(feed.user_id)%>
+           <%share = Share.find_by_id(feed.post_id)%>
+           <%shared_by = User.find_by_id(share.shared_with_id) %>
+             <%post = Post.find_by_id(share.post_id)%>
+
+             shared
+             <b><%= share.caption %></b>
+             with
+             <%= "#{shared_by.first_name.capitalize} #{shared_by.last_name.capitalize}" %>
+             on post
+             
+      <%elsif feed.feed_type.eql?(FEED_TYPE_TAG)%>
+
+              <%tag = PostsUser.find_by_id(feed.post_id)%>
+              <%tagged_user = User.find_by_id(tag.user_id)%>
+              <%post = Post.find_by_id(tag.post_id)%>
+               <%user = User.find_by_id(post.user_id)%>
+              has tagged
+              <%= "#{tagged_user.first_name.capitalize} #{tagged_user.last_name}" %>
+               in a
+              
+          <%  if post.content_type.eql?("photo")  %>
+            photo
+          <%  elsif post.content_type.eql?("video")%>
+           video
+          <%  else %>
+            status
+          <% end%>
+
+      <%elsif feed.feed_type.eql?(FEED_TYPE_FRIEND)%>
+          <%= render(:partial => 'users/feed_friendship.html', :locals => { :post_id => feed.post_id },:layout => false)%>
+      
+      <%elsif feed.feed_type.eql?(FEED_TYPE_COMMENT)%>
+
+         <%user = User.find_by_id(feed.user_id)%>
+          <%post = Post.find_by_id(feed.post_id)%>
+
+          has commented on the
+          <br></br>
+          <%  if post.content_type.eql?("photo")  %>
+               photo
+          <%  elsif post.content_type.eql?("video")%>
+            video
+          <%  else %>
+            status
+          <% end%>
+            of
+          <%= "#{post.user.first_name.capitalize} #{post.user.last_name.capitalize}" %>
+
+    <%end%>
+
+   
+                </span>
+    </li>
+
+  <%end%>
+<%end%>

@@ -1,0 +1,35 @@
+<div><%= link_to "News Feed",:controller=> "users", :action => "news_feed", :id => user.id%></div>
+<div><%= link_to "Wall",:controller=> "users", :action => "wall", :id => user.id%></div>
+<div><%= link_to "Info", :controller=> "users", :action => "show_profile"%></div>
+<%if user.eql?(current_user)%>
+<div><%= link_to "Photos",:controller=> "photos", :action => "index" , :id => user.id%></div>
+<%else%>
+<div><%= link_to "Photos",:controller=> "photos", :action => "view_others_photos", :id => user.id%></div>
+<%end%>
+
+<div><%= link_to "Friends",:controller=> "users", :action => "friends", :id => user.id%></div>
+
+
+<div><%=# image_tag("friends_main.jpg", :height => '15', :width => '15')
+%>&nbsp;
+  <%= link_to "Friend Requests", :controller=> "users", :action => "requests", :id => user.id%>&nbsp;
+  <%requests = Request.find_all_by_req_id(user.id)%>
+  <% unless requests.blank? %>
+    (<%=requests.size%>)
+  <%end%>
+</div>
+<div><%=# image_tag("friends_main.jpg", :height => '15', :width => '15')
+%>&nbsp;
+  <%= link_to "Friend Suggestions", :controller=> "users", :action => "friend_suggestions"%>&nbsp;
+  <%suggestions = FriendSuggestion.find_all_by_suggestee_user_id(user.id)%>
+  <% unless suggestions.blank? %>
+    (<%=suggestions.size%>)
+  <%end%>
+</div>
+<div>
+<%= link_to "Notifications", :controller=> "users", :action => "notifications", :id => user.id%>&nbsp;
+<%notifications = Notification.find_all_by_user_id(user.id)%>
+<% unless notifications.blank? %>
+  (<%=notifications.size%>)
+<%end%>
+</div>

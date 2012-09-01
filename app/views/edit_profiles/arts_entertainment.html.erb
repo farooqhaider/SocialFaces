@@ -1,0 +1,68 @@
+<script type="text/javascript">
+        $(document).ready(function() {
+            
+            $("#musics").tokenInput("/edit_profiles/getmusics/",{
+              theme: "facebook",
+              preventDuplicates: true,
+              prePopulate: $('#musics').data('pre')
+            });
+            $("#movies").tokenInput("/edit_profiles/getmovies/",{
+              theme: "facebook",
+              preventDuplicates: true,
+              prePopulate: $('#movies').data('pre')
+            });
+            $("#television").tokenInput("/edit_profiles/gettvshows/",{
+              theme: "facebook",
+              preventDuplicates: true,
+              prePopulate: $('#television').data('pre')
+            });
+            $("#books").tokenInput("/edit_profiles/getbooks/",{
+              theme: "facebook",
+              preventDuplicates: true,
+              prePopulate: $('#books').data('pre')
+            });
+            $("#games").tokenInput("/edit_profiles/getgames/",{
+              theme: "facebook",
+              preventDuplicates: true,
+              prePopulate: $('#games').data('pre')
+            });
+        });
+ </script>
+
+<% content_for :heading do %>
+  <%= render :partial => "heading", :locals => {:user => @user} %>
+<% end %>
+
+<%= form_tag({:controller => "edit_profiles", :action => "update_arts_entertainment"}, {:name => "artsentertainmentform"}) do %>
+
+  <div style="float:left;margin-left:100px;">
+    <%=label_tag(:musics, "Musics")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:musics,nil,:size => 50, "data-pre" => @user_musics)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;"><%=label_tag(:books, "Books")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:books,nil,:size => 50, "data-pre" => @user_books)%>
+  </div>
+  <hr/>
+
+  <div style="float:left;margin-left:100px;"><%=label_tag(:movies, "Movies")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:movies,nil,:size => 50, "data-pre" => @user_movies)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;"><%=label_tag(:television, "Television")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:television,nil,:size => 50, "data-pre" => @user_tv_shows)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;"><%=label_tag(:games, "Games")%></div>
+  <div style="margin-left:270px;">
+    <%=text_field_tag(:games,nil,:size => 50, "data-pre" => @user_games)%>
+  </div>
+  <hr/>
+  <div style="float:left;margin-left:100px;">&nbsp;</div>
+  <div style="margin-left:270px;"><a href="javascript:document.artsentertainmentform.submit()"><%=image_tag("phil_save_changes.png")%></a></div>
+<%end%>
+<br/>

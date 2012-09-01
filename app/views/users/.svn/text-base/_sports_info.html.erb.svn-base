@@ -1,0 +1,41 @@
+<div style="">
+  <div style="width:100px;float:left;margin-left:20px;margin-top:10px;"></div>
+  <div style="width:400px;float:left;margin-top:10px;">
+    <div style ="float:left">
+      Sports:&nbsp;&nbsp;
+      <br/>
+      Teams:&nbsp;&nbsp;
+      <br/>
+      Athletes:&nbsp;&nbsp;
+    </div>
+
+    <div style="float:left; margin-left:36px">
+      <% if user.sports.blank? %>
+        None
+      <%else%>
+        <%for sport in user.sports%>
+          <%=sport.name%><%= "," unless sport.eql?(user.sports.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.teams.blank? %>
+        None
+      <%else%>
+        <%for team in user.teams%>
+          <%=team.name%><%= "," unless team.eql?(user.teams.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+
+      <% if user.sports.blank? %>
+        None
+      <%else%>
+        <%for athlete in user.athletes%>
+          <%=athlete.name%><%= "," unless athlete.eql?(user.athletes.last) %>&nbsp;
+        <%end%>
+      <%end%>
+      <br/>
+    </div>
+  </div>
+</div>

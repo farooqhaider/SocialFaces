@@ -1,0 +1,47 @@
+<div id="heading" style=" margin-left:150px">
+  <h2><%= "Suggestions for #{@user.first_name} #{@user.last_name} " %></h2>
+
+  <hr/>
+</div>
+<div id  ="page_content">
+<%unless @suggestions.blank?%>
+  <% @suggestions.each do |suggestion| %>
+    
+    <%suggestor = User.find_by_id(suggestion.suggestor_user_id)%>
+    <%suggested_user = User.find_by_id(suggestion.suggested_user_id)%>
+  <%= "Suggestion from #{suggestor.first_name} #{suggestor.first_name}" %><br/><br/>
+  <div style="float:left; margin-left:250px; margin-top: 10px">
+      <a href="/users/view_other_profile/<%=suggested_user.id%>">
+        <%= if suggested_user.photo.exists?
+          image_tag(suggested_user.photo.url ,:height => '120',:width => '100')
+        else
+          if suggested_user.gender.eql?("male")
+            image_tag("profile_picture_male.gif", :height => '120',:width => '100')
+          else
+            image_tag("profile_picture_female.gif", :height => '120', :width => '100')
+          end
+        end%>
+      </a>
+      </div>
+      <div style="float:left; margin-left:10px">
+        <h3><%= link_to "#{suggested_user.first_name} #{suggested_user.last_name}" , :controller => "users", :action=> "view_other_profile", :id => suggested_user.id%></h3>
+        <%=Friend.mutual_friend_ids(@user,suggested_user).size%>&nbsp;Mutual Friends
+        <br />
+        <% unless suggested_user.current_location.blank? %>
+          Lives in <%=suggested_user.current_location.name %><br />
+        <% end %>
+        <% unless suggested_user.hometown.blank? %>
+          From <%=suggested_user.hometown.name%>&nbsp;
+        <% end %>
+      </div>
+   
+    <div style="float:right; margin-left:100px; margin-top: 40px">
+      <%= link_to image_tag("add_friend.png", :height => '25', :width => '90'),
+        :controller => "users", :action => "add_friend_req", :id=>suggested_user.id%>
+    </div>
+    <div style="clear:both;"></div>
+  <%end%>
+<%else%>
+ <br/>No results found.
+<%end%>
+</div>

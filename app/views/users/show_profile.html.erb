@@ -1,0 +1,89 @@
+<div id="left_col">
+  <%= render :partial => "profile_pic", :locals => {:user=>@user} %>
+  <br/>
+  <%= render :partial => "left_col_tabs", :locals => {:user=>@user} %>
+  <hr/>
+  <%= render :partial => "friends", :locals => {:friends => @friends,:user=>@user} %>
+
+  <br />
+  <hr/>
+  <%= render :partial => "lists", :locals => {:user=>@user} %>
+</div>
+
+<div id="right_col">
+  <br/>
+  <div id="editprofile">
+    <%= link_to image_tag("editprofile.png"), :controller => "edit_profiles", :action => "basic_info" %>
+    <br/>
+  
+  </div>
+   <%=  image_tag("people_you_may_know.png" ,:height => '30',:width => '170')%>
+    <br/>
+  <%= link_to "See all", :controller => "users", :action => "all_suggestions" %>
+  <br/><br/>
+
+  <% for suggested_user in @suggested_users %>
+    <%= if suggested_user.photo.exists?
+      image_tag(suggested_user.photo.url ,:height => '60',:width => '60')
+    else
+      if suggested_user.gender.eql?("male")
+        image_tag("profile_picture_male.gif", :height => '60',:width => '60')
+      else
+        image_tag("profile_picture_female.gif", :height => '60', :width => '60')
+      end
+    end%>
+
+    <div style="float:right">
+      <span style="font-size: medium;"><%= link_to "#{suggested_user.first_name} #{suggested_user.last_name}", :controller => "users", :action => "view_other_profile", :id => suggested_user.id %><br/>
+        <%=(Friend.mutual_friend_ids(@user,suggested_user)).size%>&nbsp;Mutual Friends<br/>
+        <%= image_tag("add_friend_icon.png", :height => "18", :width => "18") %>&nbsp;<%= link_to "Add Friend", :controller => "users", :action => "add_friend_req", :id => suggested_user.id %></span>
+    </div>
+    <br/><br/>
+  <%end%>
+</div>
+
+  <div id="page_content">
+    <div id="heading">
+      <%= render :partial => "user_info", :locals => {:user => @user} %>
+    </div>
+    <br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+      Work and Education<span style="float:right;margin-right:5px;">
+        <%=link_to "Edit", :controller => "edit_profiles", :action => "education_work", :id => @user.id%></span></div>
+    <%= render :partial => "work_education_info", :locals => {:user => @user} %>
+    <br/>
+    <br/><br/>
+    <br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+        	Sports<span style="float:right; margin-right:5px;">
+        <%=link_to "Edit", :controller => "edit_profiles", :action => "sport", :id => @user.id%></span></div>
+    <%= render :partial => "sports_info", :locals => {:user => @user} %>
+    <br/>
+    <br/><br/>
+    <br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">
+        	Arts and Entertainment<span style="float:right;margin-right:5px;">
+        <%=link_to "Edit", :controller => "edit_profiles", :action => "arts_entertainment", :id => @user.id%></span></div>
+    <%= render :partial => "arts_entertainment_info", :locals => {:user => @user} %>
+    <br/>
+    <br/><br/>
+    <br/><br/>
+    <br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">Activities and Interests<span style="float:right;margin-right:5px;"><%=link_to "Edit", :controller => "edit_profiles", :action => "activities_interests", :id => @user.id%></span></div>
+    <%= render :partial => "activities_interests_info", :locals => {:user => @user} %>
+    <br/><br/>
+    <br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">Basic information<span style="float:right;margin-right:5px;"><%=link_to "Edit", :controller => "edit_profiles", :action => "basic_info",:id => @user.id%></span></div>
+    <%= render :partial => "basic_info", :locals => {:user => @user} %>
+    <br/>
+    <br/><br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/>
+    <div style="margin-left:50px;background-color:#E1E9E2;margin-right:200px;">Contact information<span style="float:right;margin-right:5px;"><%=link_to "Edit", :controller => "edit_profiles", :action => "contact_info", :id => @user.id%></span></div>
+    <%= render :partial => "contact_info", :locals => {:user => @user} %>
+    <br/>
+
+  </div>
